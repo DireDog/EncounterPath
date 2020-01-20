@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <form action="/action_page.php">
+        <div class="container">
+          <h1>Reset Password</h1>
+          <p>
+            Please enter your email address below and we will send you information to change your password.
+          </p>
+          <label class="email" for="un">Email Address</label> <input id="email_forpws" name="email_forpws" class="form-control" type="text"><br>
+          <!-- reason for example doing it this way? -->
+          <a id="mybad" class="btn btn-primary" role="button">RESET</a>
+          <!--<!-- TEMP:  -->
+          <span class="psw-sign">back to
+            <a href="index.html">Login</a></span>
+        </div>
+        <div class="col-md-5 forgot-return" style="display:none;">
+          <h3>
+            Reset Password Sent
+          </h3>
+          <p>
+            An email has been sent to your address with a reset password you can use to access your account.
+          </p>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</body>
+
+</html>
