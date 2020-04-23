@@ -1,0 +1,116 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+  border: 3px solid #000000;
+  margin-top: 5%;
+}
+
+input[type=text], input[type=password] {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 8px 0;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 100px 100px 200px 300px;
+  padding: 14px 20px;
+  width:100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  background-color: #f44336;
+  padding: 10px 18px;
+  width: auto;
+}
+
+.imgcontainer {
+  margin: 24px 0 12px 0;
+  text-align: center;
+}
+
+#logintitle {
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.placeholder {
+  border-radius: 50%;
+  width: 40%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw-sign {
+  float: right;
+  padding-top: 3px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#psw-message {
+  display:none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px
+}
+
+#psw-message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content:" \2714";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: " \2716";
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw-sign {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
+    width: 100%;
+  }
+}
