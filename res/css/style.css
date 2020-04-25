@@ -15,6 +15,17 @@
 	min-width: 300px;
 }
 
+#creatureNameOut{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#creatureCRout{
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
 /* Style the input fields */
 input {
   padding: 10px;
@@ -37,7 +48,7 @@ input.invalid {
 border-top-style: hidden;
 border-right-style: hidden;
 border-left-style: hidden;
-border-bottom-style: groove;
+border-bottom-style: hidden;
 background-color: #eee;
 }
 

@@ -1,6 +1,36 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 var creatureCR;
+var creatureSTR;
 showTab(currentTab); // Display the current tab
+
+let abilityModifierScales = [
+  [3,3,2,0], //lv-1
+  [3,3,2,0], //lv0
+  [5,4,3,1], //lv1
+  [5,4,3,1], //lv2
+  [5,4,3,1], //lv3
+  [6,5,3,2], //lv4
+  [6,5,3,2], //lv5
+  [7,5,4,2], //lv6
+  [7,6,4,2], //lv7
+  [7,6,4,3], //lv8
+  [7,6,4,3], //lv9
+  [8,7,5,3], //10
+  [8,7,5,3], //11
+  [8,7,5,3], //12
+  [9,8,5,4], //13
+  [9,8,5,4], //14
+  [9,8,5,4], //15
+  [10,9,6,5], //16
+  [10,9,6,5], //17
+  [10,9,6,5], //18
+  [11,10,6,5], //19
+  [11,10,7,6], //20
+  [11,10,7,6], //21
+  [11,10,8,6], //22
+  [11,10,8,6], //23
+  [13,12,9,7], //24
+];
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -81,4 +111,10 @@ function creatureNameUpdate(){
 function creatureCRupdate() {
   creatureCR = document.getElementById("creatureCRin").value;
   document.getElementById("creatureCRout").value = creatureCR;
+}
+
+function creModSTRupdate() {
+  var mod = document.getElementById('creModSTRin').value;
+  creatureSTR = abilityModifierScales[creatureCR][mod];
+  document.getElementById('creatureMODout').value = creatureSTR;
 }
