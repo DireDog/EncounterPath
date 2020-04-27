@@ -8,6 +8,7 @@
   <!--CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="res/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
   <!--JS -->
   <script src="https://kit.fontawesome.com/e507889de1.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -22,51 +23,44 @@
   <!-- MultiStep Form -->
   <form id="buildForm" action="">
     <h1>Monster Builder:</h1>
-
     <!-- One "tab" for each step in the form: -->
     <div class="tab">
+      <!--creature name-->
       <p><input placeholder="Creature Name" onchange="creatureNameUpdate()" id="creatureNameIn"></p>
-
+      <!--creature level-->
       <select name="crLevel" class="custom-select" onchange="creatureCRupdate()" id="creatureCRin">
         <option selected>Creature Level</option>
-        <option value="0">-1</option>
-        <option value="1">0</option>
-        <option value="2">1</option>
-        <option value="3">2</option>
-        <option value="4">3</option>
-        <option value="5">4</option>
-        <option value="6">5</option>
-        <option value="7">6</option>
-        <option value="8">7</option>
-        <option value="9">8</option>
-        <option value="10">9</option>
-        <option value="11">10</option>
-        <option value="12">11</option>
-        <option value="13">12</option>
-        <option value="14">13</option>
-        <option value="15">14</option>
-        <option value="16">15</option>
-        <option value="17">16</option>
-        <option value="18">17</option>
-        <option value="19">18</option>
-        <option value="20">19</option>
-        <option value="21">20</option>
-        <option value="22">21</option>
-        <option value="23">22</option>
-        <option value="24">23</option>
-        <option value="25">24</option>
+        <option value="0" name="-1">-1</option>
+        <option value="1" name="0">0</option>
+        <option value="2" name="1">1</option>
+        <option value="3" name="2">2</option>
+        <option value="4" name="3">3</option>
+        <option value="5" name="4">4</option>
+        <option value="6" name="5">5</option>
+        <option value="7" name="6">6</option>
+        <option value="8" name="7">7</option>
+        <option value="9" name="8">8</option>
+        <option value="10" name="9">9</option>
+        <option value="11" name="10">10</option>
+        <option value="12" name="11">11</option>
+        <option value="13" name="12">12</option>
+        <option value="14" name="13">13</option>
+        <option value="15" name="14">14</option>
+        <option value="16" name="15">15</option>
+        <option value="17" name="16">16</option>
+        <option value="18" name="17">17</option>
+        <option value="19" name="18">18</option>
+        <option value="20" name="19">19</option>
+        <option value="21" name="20">20</option>
+        <option value="22" name="21">21</option>
+        <option value="23" name="22">22</option>
+        <option value="24" name="23">23</option>
+        <option value="25" name="24">24</option>
       </select>
+    </div>
 
-      <select name="Size" class="custom-select" onchange="creatureSizeUpdate()" id="creatureSizeIn">
-        <option selected>Creature Size</option>
-        <option value="0">Tiny</option>
-        <option value="1">Small</option>
-        <option value="2">Medium</option>
-        <option value="3">Large</option>
-        <option value="4">Huge</option>
-        <option value="5">Gargantuan</option>
-      </select>
-
+    <div class="tab">baseline templates(Optional)
+      <!--baseline template for creature-->
       <select name="baseline" class="custom-select" onchange="creatureBLupdate()" id="creatureBLin">
         <option selected>Select Baseline</option>
         <option value="0">Brute</option>
@@ -79,7 +73,8 @@
       </select>
     </div>
 
-    <div class="tab">
+    <div class="tab">Themes:
+      <!--theme for creature-->
       <select name="Theme Trait" class="custom-select" onchange="creatureThemeUpdate()" id="creatureThemeIn">
         <option selected>Select Theme (Optional)</option>
         <option value="0">Aberration</option>
@@ -93,9 +88,86 @@
       </select>
     </div>
 
-    <div class="tab">Ability Modifiers:
-      
+    <div class="tab">Basic Information:
+      <p><input placeholder="Alignment" onchange="" id="creatureAlignIn"></p>
+
+      <select name="Size" class="custom-select" onchange="creatureSizeUpdate()" id="creatureSizeIn">
+        <option selected>Creature Size</option>
+        <option value="0" name="Tiny">Tiny</option>
+        <option value="1" name="Small">Small</option>
+        <option value="2" name="Medium">Medium</option>
+        <option value="3" name="Large">Large</option>
+        <option value="4" name="Huge">Huge</option>
+        <option value="5" name="Gargantuan">Gargantuan</option>
+      </select>
+
+      <p><input placeholder="Traits" onchange="" id=""></p>
+
+      <p><input placeholder="Rarity" onchange="" id=""></p>
+
+      <p><input placeholder="Languages" onchange="" id=""></p>
+
+      <p><input placeholder="Speed" onchange="" id=""></p>
+    </div>
+
+    <div class="tab">Perception and Ability Modifiers:<br><br>
+      <lable for="crePERin">Perception</lable>
+      <select name="selPER" class="custom-select" onchange="crePERupdate()" id="crePERin">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+        <option value="4">Terrible</option>
+      </select>
+
+      <lable for="creModSTRin">Strength</lable>
       <select name="STRmod" class="custom-select" onchange="creModSTRupdate()" id="creModSTRin">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <lable for="creModSTRin">Dexterity</lable>
+      <select name="DEXmod" class="custom-select" onchange="creModDEXupdate()" id="creModDEXin">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <lable for="creModCONin">Constitution</lable>
+      <select name="CONmod" class="custom-select" onchange="creModCONupdate()" id="creModCONin">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <lable for="creModINTin">Intelligence</lable>
+      <select name="INTmod" class="custom-select" onchange="creModINTupdate()" id="creModINTin">
+        <option selected>Select</option>
+        <option value="0" name="Extreme">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <lable for="creModWISin">Wisdom</lable>
+      <select name="WISmod" class="custom-select" onchange="creModWISupdate()" id="creModWISin">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <lable for="creModCHAin">Charisma</lable>
+      <select name="CHAmod" class="custom-select" onchange="creModCHAupdate()" id="creModCHAin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -104,9 +176,28 @@
       </select>
     </div>
 
-    <div class="tab">Login Info:
-      <p><input placeholder="Username..." oninput="this.className = ''"></p>
-      <p><input placeholder="Password..." oninput="this.className = ''"></p>
+    <div class="tab">Skills:
+
+    </div>
+
+    <div class="tab">AC and HP:
+
+    </div>
+
+    <div class="tab">Abilities:
+
+    </div>
+
+    <div class="tab">Strikes:
+
+    </div>
+
+    <div class="tab">Items:
+
+    </div>
+
+    <div class="tab">Spells:
+
     </div>
 
     <div style="overflow:auto;">
@@ -122,12 +213,21 @@
       <span class="step"></span>
       <span class="step"></span>
       <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+
     </div>
   </form>
 
+  <!-- OUT PUT FORM -->
   <div class="container">
     <form id="outPutForm">
-      <div class="form-row name-level">
+      <div class="form-row border-bottom-on">
         <div class="col">
           <input placeholder="Creature Name" type="text" class="no-outline" id="creatureNameOut" readonly>
         </div>
@@ -136,42 +236,151 @@
         </div>
       </div>
       <div class="form-row ">
-        <div class="col">
-          <input type="text" class="no-outline" id="creatureAlignOut" readonly>
+        <div class="col" id="">
+          <!-- Trait elements generated here -->
+          <input id="creatureAlign">
         </div>
-        <div class="col">
-          <input type="text" class="no-outline" id="creatureSizeOut" readonly>
-        </div>
-        <div class="col">
-          <input type="text" class="no-outline" id="creatureTraitsOut" readonly>
-        </div>
-        <div class="col">
-          <input type="text" class="no-outline" id="creatureThemeOut" readonly>
+        <div class="col" id="cre-trait-out">
+          <!-- Trait elements generated here -->
+          <input id="creatureSize">
         </div>
       </div>
+
       <div class="form-row">
-        <div class="col">
+        <div class="col inline-lable">
           <lable for="creaturePERout">Perception </lable>
           <input type="text" class="no-outline" id="creaturePERout" readonly>
         </div>
       </div>
+
       <div class="form-row">
-        <div class="col"><lable for="creatureLANGout">Languages </lable>
+        <div class="col inline-lable">
+          <lable for="creatureLANGout">Languages </lable>
           <input type="text" class="no-outline" id="creatureLANGout" readonly>
         </div>
       </div>
+
       <div class="form-row">
-        <div class="col">
-          <lable for="creatureSkillsOut">Skills </lable>
-          <input type="text" class="no-outline" id="creatureSkillsOut" readonly>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col">
-          <lable for="creatureMODout">Ability Modifiers </lable>
+        <div class="col inline-lable">
+          <lable for="creatureMODout">Skills </lable>
           <input type="text" class="no-outline" id="creatureMODout" readonly>
         </div>
       </div>
+
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="creModSTRout">Str </lable>
+          <input type="text" class="no-outline" id="creModSTRout" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="creModDEXout">Dex </lable>
+          <input type="text" class="no-outline" id="creModDEXout" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="creModCONout">Con </lable>
+          <input type="text" class="no-outline" id="creModCONout" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="creModINTout">Int </lable>
+          <input type="text" class="no-outline" id="creModINTout" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="creModWISout">Wis </lable>
+          <input type="text" class="no-outline" id="creModWISout" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="creModCHAout">Cha </lable>
+          <input type="text" class="no-outline" id="creModCHAout" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="creatureMODout">Items </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row border-bottom-on">
+        <div class="col inline-lable ">
+          <lable for="creatureMODout">Interaction Abilities </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="">AC </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="">Fort </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="">Ref </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+        <div class="col inline-lable">
+          <lable for="">Will </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="">HP </lable>
+          <input type="text" placeholder="AA" class="no-outline" id="" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="">Immunities </lable>
+          <input type="text" placeholder="BBBBBBBBBBB BBB BBBBBBBBB" class="no-outline" id="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="">Weaknesses </lable>
+          <input type="text" placeholder="CCCC CCCCCCC CCCCCCCC" class="no-outline" id="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col inline-lable">
+          <lable for="">Resistances </lable>
+          <input type="text" placeholder="DDD DDDDDDD DDD DDDDDDDD" class="no-outline" id="">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable ">
+          <lable for="">Automatic Abilities </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row border-bottom-on">
+        <div class="col inline-lable ">
+          <lable for="">Reactive Abilities </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable ">
+          <lable for="">Speed </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-lable ">
+          <lable for="">Offensive or Proactive Abilities </lable>
+          <input type="text" class="no-outline" id="" readonly>
+        </div>
+      </div>
+
+
   </div>
   </form>
 

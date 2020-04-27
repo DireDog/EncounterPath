@@ -1,7 +1,21 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
-var creatureCR;
-var creatureSTR;
 showTab(currentTab); // Display the current tab
+
+var creature = {
+  name: "",
+  cr: "",
+  crIndex:"",
+  size: "",
+  baseline: "",
+  theme: "",
+  per: "",
+  str: "",
+  dex: "",
+  con: "",
+  int: "",
+  wis: "",
+  cha: ""
+};
 
 let abilityModifierScales = [
   [3,3,2,0], //lv-1
@@ -30,6 +44,35 @@ let abilityModifierScales = [
   [11,10,8,6], //22
   [11,10,8,6], //23
   [13,12,9,7], //24
+];
+
+let perceptionScales = [
+  [9,8,5,2,0], //lv-1
+  [10,9,6,3,1], //lv0
+  [11,10,7,4,2], //lv1
+  [12,11,8,5,3], //lv2
+  [14,12,9,6,4], //lv3
+  [15,14,11,8,6], //lv4
+  [17,15,12,9,7], //lv5
+  [18,17,14,11,8], //lv6
+  [20,18,15,12,10], //lv7
+  [21,19,16,13,11], //lv8
+  [23,21,18,15,12], //lv9
+  [24,22,19,16,14], //10
+  [26,24,21,18,15], //11
+  [27,25,22,19,16], //12
+  [29,26,23,20,18], //13
+  [30,28,25,22,19], //14
+  [32,29,26,23,20], //15
+  [33,30,28,25,22], //16
+  [35,32,29,26,23], //17
+  [36,33,30,27,24], //18
+  [38,35,32,29,26], //19
+  [39,36,33,30,27], //20
+  [41,38,35,32,28], //21
+  [43,39,36,33,30], //22
+  [44,40,37,34,31], //23
+  [46,42,38,36,32], //24
 ];
 
 function showTab(n) {
@@ -104,17 +147,76 @@ function fixStepIndicator(n) {
 
 //=======================================================================
 function creatureNameUpdate(){
-  var name = document.getElementById("creatureNameIn").value;
-  document.getElementById("creatureNameOut").value = name;
+  creature.name = document.getElementById("creatureNameIn").value;
+  document.getElementById("creatureNameOut").value = creature.name;
 }
 
 function creatureCRupdate() {
-  creatureCR = document.getElementById("creatureCRin").value;
-  document.getElementById("creatureCRout").value = creatureCR;
+  var crElement = document.getElementById('creatureCRin');
+  var crName = crElement.options[crElement.selectedIndex].getAttribute('name');
+  creature.cr = "CREATURE " + crName;
+  document.getElementById("creatureCRout").value = creature.cr;
+  creature.crIndex = document.getElementById('creatureCRin').value;
+}
+
+function creModPERupdate() {
+  var mod = document.getElementById('creModPERin').value;
+  creature.per = perceptionScales[creature.crIndex][mod];
+  document.getElementById('creModPERout').value = creature.per;
 }
 
 function creModSTRupdate() {
   var mod = document.getElementById('creModSTRin').value;
-  creatureSTR = abilityModifierScales[creatureCR][mod];
-  document.getElementById('creatureMODout').value = creatureSTR;
+  creature.str = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModSTRout').value = creature.str;
+}
+
+function creModDEXupdate() {
+  var mod = document.getElementById('creModDEXin').value;
+  creature.dex = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModDEXout').value = creature.dex;
+}
+
+function creModCONupdate() {
+  var mod = document.getElementById('creModCONin').value;
+  creature.con = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModCONout').value = creature.con;
+}
+
+function creModINTupdate() {
+  var mod = document.getElementById('creModINTin').value;
+  creature.int = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModINTout').value = creature.int;
+}
+
+function creModWISupdate() {
+  var mod = document.getElementById('creModWISin').value;
+  creature.wis = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModWISout').value = creature.wis;
+}
+
+function creModCHAupdate() {
+  var mod = document.getElementById('creModCHAin').value;
+  creature.cha = abilityModifierScales[creature.crIndex][mod];
+  document.getElementById('creModCHAout').value = creature.cha;
+}
+
+function creatureSizeUpdate(){
+  var sizeElement = document.getElementById('creatureSizeIn');
+  var sizeName = sizeElement.options[sizeElement.selectedIndex].getAttribute('name');
+  var input = document.createElement("INPUT");
+  input.setAttribute('type','text');
+  input.setAttribute('value',sizeName);
+  input.setAttribute('id','creatureSize');
+  inputElement = document.getElementById('cre-trait-out');
+  inputElement.appendChild(input);
+
+  var elInputExists = document.getElementById("creatureSize");
+  if(typeof(elInputExists) != 'undefined' && elInputExists != null){
+    inputElement.replaceChild(input, elInputExists);
+  }else if(typeof(elInputExists) == 'undefined' && elInputExists == null){
+    inputElement.appendChild(input);
+  }else{
+    console.log("error in creatureSizeUpdate()");
+  }
 }

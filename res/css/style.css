@@ -1,3 +1,4 @@
+
 /* Style the form */
 #buildForm {
   background-color: #ffffff;
@@ -6,21 +7,57 @@
   width: 70%;
   min-width: 300px;
 }
+/*OUT PUT FORM STYLEING*/
+.inline-lable {
+  display: inline-block;
+}
+.inline-lable .input{
+  display: inline-block;
+}
+.inline-lable .no-outline{
+}
 
 #outPutForm {
 	background-color: #ffffff;
+  font-family: 'Manrope', sans-serif;
 	margin: 100px auto;
 	padding: 40px;
-	width: 70%;
-	min-width: 300px;
+  white-space: normal;
+	min-width: 700px;
+}
+
+.border-bottom-on{
+  border-bottom: 3px solid black;
 }
 
 #creatureNameOut{
+  font-family: 'Manrope', sans-serif;
   font-size: 28px;
   font-weight: bold;
 }
 
+#creatureAlign{
+  text-align: center;
+  width: 3em;
+  white-space: nowrap;
+  color: white;
+  background-color: blue;
+  border: 1px solid black;
+  font-family: 'Manrope', sans-serif;
+}
+
+#creatureSize{
+  text-align: center;
+  width: 7em;
+  white-space: nowrap;
+  color: white;
+  background-color: green;
+  border: 1px solid black;
+  font-family: 'Manrope', sans-serif;
+}
+
 #creatureCRout{
+  font-family: 'Manrope', sans-serif;
   font-size: 28px;
   font-weight: bold;
   text-align: right;
