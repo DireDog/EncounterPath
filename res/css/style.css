@@ -8,13 +8,13 @@
   min-width: 300px;
 }
 /*OUT PUT FORM STYLEING*/
-.inline-lable {
+.inline-label {
   display: inline-block;
 }
-.inline-lable .input{
+.inline-label .input{
   display: inline-block;
 }
-.inline-lable .no-outline{
+.inline-label .no-outline{
 }
 
 #outPutForm {
@@ -30,15 +30,37 @@
   border-bottom: 3px solid black;
 }
 
+/* TOP SECTIONS */
 #creatureNameOut{
   font-family: 'Manrope', sans-serif;
   font-size: 28px;
   font-weight: bold;
 }
 
+#creatureCRout{
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
+
+/* TRAITS SECTIONS */
+#col-traits{
+  background-color: yellow;
+}
+
+#creatureRare{
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  background-color: orange;
+  border: 1px solid black;
+  font-family: 'Manrope', sans-serif;
+}
+
 #creatureAlign{
   text-align: center;
-  width: 3em;
   white-space: nowrap;
   color: white;
   background-color: blue;
@@ -48,7 +70,6 @@
 
 #creatureSize{
   text-align: center;
-  width: 7em;
   white-space: nowrap;
   color: white;
   background-color: green;
@@ -56,11 +77,13 @@
   font-family: 'Manrope', sans-serif;
 }
 
-#creatureCRout{
+#creatureTrait{
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  background-color: red;
+  border: 1px solid black;
   font-family: 'Manrope', sans-serif;
-  font-size: 28px;
-  font-weight: bold;
-  text-align: right;
 }
 
 /* Style the input fields */

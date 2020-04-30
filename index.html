@@ -91,7 +91,7 @@
     <div class="tab">Basic Information:
       <p><input placeholder="Alignment" onchange="" id="creatureAlignIn"></p>
 
-      <select name="Size" class="custom-select" onchange="creatureSizeUpdate()" id="creatureSizeIn">
+      <select name="Size" class="custom-select" onchange="creatureTraitsUpdate('creatureSizeIn','creatureSize')" id="creatureSizeIn">
         <option selected>Creature Size</option>
         <option value="0" name="Tiny">Tiny</option>
         <option value="1" name="Small">Small</option>
@@ -111,7 +111,7 @@
     </div>
 
     <div class="tab">Perception and Ability Modifiers:<br><br>
-      <lable for="crePERin">Perception</lable>
+      <label for="crePERin">Perception</label>
       <select name="selPER" class="custom-select" onchange="crePERupdate()" id="crePERin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -121,7 +121,7 @@
         <option value="4">Terrible</option>
       </select>
 
-      <lable for="creModSTRin">Strength</lable>
+      <label for="creModSTRin">Strength</label>
       <select name="STRmod" class="custom-select" onchange="creModSTRupdate()" id="creModSTRin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -130,7 +130,7 @@
         <option value="3">Low</option>
       </select>
 
-      <lable for="creModSTRin">Dexterity</lable>
+      <label for="creModSTRin">Dexterity</label>
       <select name="DEXmod" class="custom-select" onchange="creModDEXupdate()" id="creModDEXin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -139,7 +139,7 @@
         <option value="3">Low</option>
       </select>
 
-      <lable for="creModCONin">Constitution</lable>
+      <label for="creModCONin">Constitution</label>
       <select name="CONmod" class="custom-select" onchange="creModCONupdate()" id="creModCONin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -148,7 +148,7 @@
         <option value="3">Low</option>
       </select>
 
-      <lable for="creModINTin">Intelligence</lable>
+      <label for="creModINTin">Intelligence</label>
       <select name="INTmod" class="custom-select" onchange="creModINTupdate()" id="creModINTin">
         <option selected>Select</option>
         <option value="0" name="Extreme">Extreme</option>
@@ -157,7 +157,7 @@
         <option value="3">Low</option>
       </select>
 
-      <lable for="creModWISin">Wisdom</lable>
+      <label for="creModWISin">Wisdom</label>
       <select name="WISmod" class="custom-select" onchange="creModWISupdate()" id="creModWISin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -166,7 +166,7 @@
         <option value="3">Low</option>
       </select>
 
-      <lable for="creModCHAin">Charisma</lable>
+      <label for="creModCHAin">Charisma</label>
       <select name="CHAmod" class="custom-select" onchange="creModCHAupdate()" id="creModCHAin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -236,146 +236,147 @@
         </div>
       </div>
       <div class="form-row ">
-        <div class="col" id="">
+        <div class="col" id="col-traits">
           <!-- Trait elements generated here -->
+          <!--
+          <input id="creatureRare">
           <input id="creatureAlign">
-        </div>
-        <div class="col" id="cre-trait-out">
-          <!-- Trait elements generated here -->
           <input id="creatureSize">
+          <input id="creatureTrait">
+        -->
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="creaturePERout">Perception </lable>
+        <div class="col inline-label">
+          <label for="creaturePERout">Perception </label>
           <input type="text" class="no-outline" id="creaturePERout" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="creatureLANGout">Languages </lable>
+        <div class="col inline-label">
+          <label for="creatureLANGout">Languages </label>
           <input type="text" class="no-outline" id="creatureLANGout" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="creatureMODout">Skills </lable>
+        <div class="col inline-label">
+          <label for="creatureMODout">Skills </label>
           <input type="text" class="no-outline" id="creatureMODout" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="creModSTRout">Str </lable>
+        <div class="col inline-label">
+          <label for="creModSTRout">Str </label>
           <input type="text" class="no-outline" id="creModSTRout" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="creModDEXout">Dex </lable>
+        <div class="col inline-label">
+          <label for="creModDEXout">Dex </label>
           <input type="text" class="no-outline" id="creModDEXout" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="creModCONout">Con </lable>
+        <div class="col inline-label">
+          <label for="creModCONout">Con </label>
           <input type="text" class="no-outline" id="creModCONout" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="creModINTout">Int </lable>
+        <div class="col inline-label">
+          <label for="creModINTout">Int </label>
           <input type="text" class="no-outline" id="creModINTout" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="creModWISout">Wis </lable>
+        <div class="col inline-label">
+          <label for="creModWISout">Wis </label>
           <input type="text" class="no-outline" id="creModWISout" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="creModCHAout">Cha </lable>
+        <div class="col inline-label">
+          <label for="creModCHAout">Cha </label>
           <input type="text" class="no-outline" id="creModCHAout" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="creatureMODout">Items </lable>
+        <div class="col inline-label">
+          <label for="creatureMODout">Items </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row border-bottom-on">
-        <div class="col inline-lable ">
-          <lable for="creatureMODout">Interaction Abilities </lable>
+        <div class="col inline-label ">
+          <label for="creatureMODout">Interaction Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="">AC </lable>
+        <div class="col inline-label">
+          <label for="">AC </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="">Fort </lable>
+        <div class="col inline-label">
+          <label for="">Fort </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="">Ref </lable>
+        <div class="col inline-label">
+          <label for="">Ref </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
-        <div class="col inline-lable">
-          <lable for="">Will </lable>
+        <div class="col inline-label">
+          <label for="">Will </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="">HP </lable>
+        <div class="col inline-label">
+          <label for="">HP </label>
           <input type="text" placeholder="AA" class="no-outline" id="" readonly>
         </div>
       </div>
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="">Immunities </lable>
+        <div class="col inline-label">
+          <label for="">Immunities </label>
           <input type="text" placeholder="BBBBBBBBBBB BBB BBBBBBBBB" class="no-outline" id="">
         </div>
       </div>
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="">Weaknesses </lable>
+        <div class="col inline-label">
+          <label for="">Weaknesses </label>
           <input type="text" placeholder="CCCC CCCCCCC CCCCCCCC" class="no-outline" id="">
         </div>
       </div>
       <div class="form-row">
-        <div class="col inline-lable">
-          <lable for="">Resistances </lable>
+        <div class="col inline-label">
+          <label for="">Resistances </label>
           <input type="text" placeholder="DDD DDDDDDD DDD DDDDDDDD" class="no-outline" id="">
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable ">
-          <lable for="">Automatic Abilities </lable>
+        <div class="col inline-label ">
+          <label for="">Automatic Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row border-bottom-on">
-        <div class="col inline-lable ">
-          <lable for="">Reactive Abilities </lable>
+        <div class="col inline-label ">
+          <label for="">Reactive Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable ">
-          <lable for="">Speed </lable>
+        <div class="col inline-label ">
+          <label for="">Speed </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-lable ">
-          <lable for="">Offensive or Proactive Abilities </lable>
+        <div class="col inline-label ">
+          <label for="">Offensive or Proactive Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>

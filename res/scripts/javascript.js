@@ -75,6 +75,124 @@ let perceptionScales = [
   [46,42,38,36,32], //24
 ];
 
+let skillsScales = [
+  [8,5,4,2], //lv-1
+  [9,6,5,3], //lv0
+  [10,7,6,4], //lv1
+  [11,8,7,5], //lv2
+  [13,10,9,7], //lv3
+  [15,12,10,8], //lv4
+  [16,13,12,10], //lv5
+  [18,15,13,12], //lv6
+  [20,17,15,13], //lv7
+  [21,18,16,14], //lv8
+  [23,20,18,16], //lv9
+  [25,22,19,17], //10
+  [26,23,21,19], //11
+  [28,25,22,20], //12
+  [30,27,24,22], //13
+  [31,28,25,23], //14
+  [33,30,27,25], //15
+  [35,32,28,26], //16
+  [36,33,30,28], //17
+  [38,35,31,29], //18
+  [40,37,33,31], //19
+  [41,38,34,32], //20
+  [43,40,36,34], //21
+  [45,42,37,35], //22
+  [46,43,38,36], //23
+  [48,45,40,38], //24
+];
+
+let acScales = [
+  [18,15,14,12], //lv-1
+  [19,16,15,13], //lv0
+  [19,16,15,13], //lv1
+  [21,18,17,15], //lv2
+  [22,19,18,16], //lv3
+  [24,21,20,18], //lv4
+  [25,22,21,19], //lv5
+  [27,24,23,21], //lv6
+  [28,25,24,22], //lv7
+  [30,27,26,24], //lv8
+  [31,28,27,25], //lv9
+  [33,30,29,27], //10
+  [34,31,30,28], //11
+  [36,33,32,30], //12
+  [37,34,33,31], //13
+  [39,36,35,33], //14
+  [40,37,36,34], //15
+  [42,39,38,36], //16
+  [43,40,39,37], //17
+  [45,42,41,39], //18
+  [46,43,42,40], //19
+  [48,45,44,42], //20
+  [49,46,45,43], //21
+  [51,48,47,45], //22
+  [52,49,48,46], //23
+  [54,51,50,48], //24
+];
+
+let savingThrowScales = [
+  [9,8,5,2,0], //lv-1
+  [10,9,6,3,1], //lv0
+  [11,10,7,4,2], //lv1
+  [12,11,8,5,3], //lv2
+  [14,12,9,6,4], //lv3
+  [15,14,11,8,6], //lv4
+  [17,15,12,9,7], //lv5
+  [18,17,14,11,8], //lv6
+  [20,18,15,12,10], //lv7
+  [21,19,16,13,11], //lv8
+  [23,21,18,15,12], //lv9
+  [24,22,19,16,14], //10
+  [26,24,21,18,15], //11
+  [27,25,22,19,16], //12
+  [29,26,23,20,18], //13
+  [30,28,25,22,19], //14
+  [32,29,26,23,20], //15
+  [33,30,28,25,22], //16
+  [35,32,29,26,23], //17
+  [36,33,30,27,24], //18
+  [38,35,32,29,26], //19
+  [39,36,33,30,27], //20
+  [41,38,35,32,28], //21
+  [43,39,36,33,30], //22
+  [44,40,37,34,31], //23
+  [46,42,38,36,32], //24
+];
+
+let hpScales = [
+  [9,8,6], //lv-1
+  [20,16,13], //lv0
+  [26,21,16], //lv1
+  [40,32,25], //lv2
+  [59,48,37], //lv3
+  [78,63,48], //lv4
+  [97,78,59], //lv5
+  [123,99,75], //lv6
+  [148,119,90], //lv7
+  [173,139,105], //lv8
+  [198,159,120], //lv9
+  [223,179,135], //10
+  [248,199,150], //11
+  [273,219,165], //12
+  [298,239,180], //13
+  [323,259,195], //14
+  [348,279,210], //15
+  [373,299,225], //16
+  [398,319,240], //17
+  [423,339,255], //18
+  [448,359,270], //19
+  [473,379,285], //20
+  [505,405,305], //21
+  [544,436,329], //22
+  [581,466,351], //23
+  [633,508,383], //24
+];
+
+
+
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -201,22 +319,42 @@ function creModCHAupdate() {
   document.getElementById('creModCHAout').value = creature.cha;
 }
 
-function creatureSizeUpdate(){
-  var sizeElement = document.getElementById('creatureSizeIn');
-  var sizeName = sizeElement.options[sizeElement.selectedIndex].getAttribute('name');
+/* add traits to out put form */
+function creatureTraitsUpdate(newTrait, newTraitId){
+  /*get the element the user inputed information into */
+  var element = document.getElementById(newTrait);
+  var name = element.options[element.selectedIndex].getAttribute('name');
+  var nameLen = name.length;
+  console.log(nameLen);
+
+  /* type set is not monospace so trim some white space from ends of long strings */
+  for (i = nameLen; i >= 10; i = i - 10){
+    nameLen = nameLen - 2;
+    console.log("loop:"+ nameLen);
+  }
+  /*so that out will look something like '12em' ect*/
+  nameLen = nameLen + 'em';
+  console.log(nameLen);
+
+  /*actually make the new element to be added and set its Attributes*/
   var input = document.createElement("INPUT");
-  input.setAttribute('type','text');
-  input.setAttribute('value',sizeName);
-  input.setAttribute('id','creatureSize');
-  inputElement = document.getElementById('cre-trait-out');
+  input.setAttribute('type', 'text');
+  input.setAttribute('value', name);
+  input.setAttribute('id', newTraitId);
+  input.style.width = nameLen;
+  /*where the new element will go*/
+  inputElement = document.getElementById('col-traits');
   inputElement.appendChild(input);
 
-  var elInputExists = document.getElementById("creatureSize");
+  /*test if element allready exists to handle later user edits*/
+  var elInputExists = document.getElementById(newTraitId);
   if(typeof(elInputExists) != 'undefined' && elInputExists != null){
     inputElement.replaceChild(input, elInputExists);
+    creature.size = input.value;
   }else if(typeof(elInputExists) == 'undefined' && elInputExists == null){
     inputElement.appendChild(input);
+    creature.size = input.value;
   }else{
-    console.log("error in creatureSizeUpdate()");
+    console.log("error in creatureTraitUpdate()");
   }
 }
