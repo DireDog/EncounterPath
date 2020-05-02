@@ -5,16 +5,32 @@
   margin: 100px auto;
   padding: 40px;
   width: 70%;
-  min-width: 300px;
+  min-width: 700px;
 }
+
+#redTraitIn {
+  width: auto;
+}
+
 /*OUT PUT FORM STYLEING*/
 .inline-label {
   display: inline-block;
 }
+
 .inline-label .input{
-  display: inline-block;
+  display: inline;
 }
+
 .inline-label .no-outline{
+}
+
+.custom-select{
+  margin-bottom: 25px;
+}
+
+.trait-form-line{
+  display: inline-block;
+  width: 100%;
 }
 
 #outPutForm {
@@ -50,7 +66,7 @@
   background-color: yellow;
 }
 
-#creatureRare{
+#creatureRarity{
   text-align: center;
   white-space: nowrap;
   color: white;
@@ -77,7 +93,7 @@
   font-family: 'Manrope', sans-serif;
 }
 
-#creatureTrait{
+.redTrait{
   text-align: center;
   white-space: nowrap;
   color: white;

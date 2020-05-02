@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="res/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
   <!--JS -->
-  <script src="https://kit.fontawesome.com/e507889de1.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e507889de1.js" crossorigin="anonymous" SameSite="None"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
     <!-- One "tab" for each step in the form: -->
     <div class="tab">
       <!--creature name-->
-      <p><input placeholder="Creature Name" onchange="creatureNameUpdate()" id="creatureNameIn"></p>
+      <p><input placeholder="Creature Name" onchange="simpleTextUpdate(creatureNameIn,creatureNameOut,'name')" id="creatureNameIn"></p>
       <!--creature level-->
       <select name="crLevel" class="custom-select" onchange="creatureCRupdate()" id="creatureCRin">
         <option selected>Creature Level</option>
@@ -89,25 +89,79 @@
     </div>
 
     <div class="tab">Basic Information:
-      <p><input placeholder="Alignment" onchange="" id="creatureAlignIn"></p>
 
-      <select name="Size" class="custom-select" onchange="creatureTraitsUpdate('creatureSizeIn','creatureSize')" id="creatureSizeIn">
-        <option selected>Creature Size</option>
-        <option value="0" name="Tiny">Tiny</option>
-        <option value="1" name="Small">Small</option>
-        <option value="2" name="Medium">Medium</option>
-        <option value="3" name="Large">Large</option>
-        <option value="4" name="Huge">Huge</option>
-        <option value="5" name="Gargantuan">Gargantuan</option>
-      </select>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
 
-      <p><input placeholder="Traits" onchange="" id=""></p>
+            <select name="Rarity" class="custom-select" onchange="creatureTraitsUpdate('creatureRarityIn','creatureRarity','rareT')" id="creatureRarityIn">
+              <option selected>Creature Rarity</option>
+              <option value="0" name="Common">Common</option>
+              <option value="1" name="Uncommon">Uncommon</option>
+              <option value="2" name="Rare">Rare</option>
+              <option value="3" name="Unique">Unique</option>
+            </select>
 
-      <p><input placeholder="Rarity" onchange="" id=""></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
 
-      <p><input placeholder="Languages" onchange="" id=""></p>
+            <select name="Alignment" class="custom-select" onchange="creatureTraitsUpdate('creatureAlignIn','creatureAlign','alignT')" id="creatureAlignIn">
+              <option selected>Creature Alignment</option>
+              <option value="0" name="LG">Lawful Good</option>
+              <option value="1" name="LN">Lawful Neutral</option>
+              <option value="2" name="LE">Lawful Evil</option>
+              <option value="3" name="NG">Neutral Good</option>
+              <option value="4" name="N">True Neutral</option>
+              <option value="5" name="NE">Neutral Evil</option>
+              <option value="6" name="CG">Chaotic Good</option>
+              <option value="7" name="CN">Chaotic Neutral</option>
+              <option value="8" name="CE">Chaotic Evil</option>
+            </select>
 
-      <p><input placeholder="Speed" onchange="" id=""></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+
+            <select name="Size" class="custom-select" onchange="creatureTraitsUpdate('creatureSizeIn','creatureSize','sizeT')" id="creatureSizeIn">
+              <option selected>Creature Size</option>
+              <option value="0" name="Tiny">Tiny</option>
+              <option value="1" name="Small">Small</option>
+              <option value="2" name="Medium">Medium</option>
+              <option value="3" name="Large">Large</option>
+              <option value="4" name="Huge">Huge</option>
+              <option value="5" name="Gargantuan">Gargantuan</option>
+            </select>
+
+          </div>
+        </div>
+        <!--/**************************************************************/-->
+        <div class="row">
+          <div class="col-sm-12">
+            <input placeholder="Traits" onchange="" id="redTraitIn" />
+            <button type="button" onclick="redTraitUpdate('redTraitIn','redT')">Add Trait</button>
+            <button type="button" onclick="redTraitRemove()"> Delete Trait </button>
+        <!-- ************************************************************** -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <p><input placeholder="Languages" onchange="simpleTextUpdate(creatureLanIn,creatureLanOut,'languages')" id="creatureLanIn" /></p>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <p><input placeholder="Speed" onchange="simpleTextUpdate(creatureSpeedIn,creatureSpeedOut,'speed')" id="creatureSpeedIn" /></p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="tab">Perception and Ability Modifiers:<br><br>
@@ -122,7 +176,7 @@
       </select>
 
       <label for="creModSTRin">Strength</label>
-      <select name="STRmod" class="custom-select" onchange="creModSTRupdate()" id="creModSTRin">
+      <select name="STRmod" class="custom-select" onchange="abilityModUpdate(creModSTRin,creModSTRout,'str')" id="creModSTRin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -131,7 +185,7 @@
       </select>
 
       <label for="creModSTRin">Dexterity</label>
-      <select name="DEXmod" class="custom-select" onchange="creModDEXupdate()" id="creModDEXin">
+      <select name="DEXmod" class="custom-select" onchange="abilityModUpdate(creModDEXin,creModDEXout,'dex')" id="creModDEXin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -140,7 +194,7 @@
       </select>
 
       <label for="creModCONin">Constitution</label>
-      <select name="CONmod" class="custom-select" onchange="creModCONupdate()" id="creModCONin">
+      <select name="CONmod" class="custom-select" onchange="abilityModUpdate(creModCONin,creModCONout,'con')" id="creModCONin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -149,7 +203,7 @@
       </select>
 
       <label for="creModINTin">Intelligence</label>
-      <select name="INTmod" class="custom-select" onchange="creModINTupdate()" id="creModINTin">
+      <select name="INTmod" class="custom-select" onchange="abilityModUpdate(creModINTin,creModINTout,'int')" id="creModINTin">
         <option selected>Select</option>
         <option value="0" name="Extreme">Extreme</option>
         <option value="1">High</option>
@@ -158,7 +212,7 @@
       </select>
 
       <label for="creModWISin">Wisdom</label>
-      <select name="WISmod" class="custom-select" onchange="creModWISupdate()" id="creModWISin">
+      <select name="WISmod" class="custom-select" onchange="abilityModUpdate(creModWISin,creModWISout,'wis')" id="creModWISin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -167,7 +221,7 @@
       </select>
 
       <label for="creModCHAin">Charisma</label>
-      <select name="CHAmod" class="custom-select" onchange="creModCHAupdate()" id="creModCHAin">
+      <select name="CHAmod" class="custom-select" onchange="abilityModUpdate(creModCHAin,creModCHAout,'cha')" id="creModCHAin">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -177,10 +231,207 @@
     </div>
 
     <div class="tab">Skills:
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
 
+            <label for="acro">Acrobatics</label>
+            <select name="acro" class="custom-select" onchange="" id="acroId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="arcaId">Arcana</label>
+            <select name="arca" class="custom-select" onchange="" id="arcaId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="athlId">Athletics</label>
+            <select name="athl" class="custom-select" onchange="" id="athlId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="crafId">Crafting</label>
+            <select name="craf" class="custom-select" onchange="" id="crafId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="deceId">Deception</label>
+            <select name="dece" class="custom-select" onchange="" id="deceId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="diplId">Diplomacy</label>
+            <select name="dipl" class="custom-select" onchange="" id="diplId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="intiId">Intimidation</label>
+            <select name="inti" class="custom-select" onchange="" id="intiId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <!-- lore here -->
+
+            <label for="mediId">Medicine</label>
+            <select name="medi" class="custom-select" onchange="" id="mediId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="natuId">Nature</label>
+            <select name="natu" class="custom-select" onchange="" id="natuId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="occuId">Occultism</label>
+            <select name="occu" class="custom-select" onchange="" id="occuId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="perfId">Performance</label>
+            <select name="perf" class="custom-select" onchange="" id="perfId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="reliId">Religion</label>
+            <select name="reli" class="custom-select" onchange="" id="reliId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="sociId">Society</label>
+            <select name="soci" class="custom-select" onchange="" id="sociId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="steaId">Stealth</label>
+            <select name="stea" class="custom-select" onchange="" id="steaId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="survId">Survival</label>
+            <select name="surv" class="custom-select" onchange="" id="survId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+            <label for="thieId">Thievery</label>
+            <select name="thie" class="custom-select" onchange="" id="thieId">
+              <option selected>Select</option>
+              <option value="0">Extreme</option>
+              <option value="1">High</option>
+              <option value="2">Moderate</option>
+              <option value="3">Low</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="tab">AC and HP:
+
+      <label for="acId">AC</label>
+      <select name="ac" class="custom-select" onchange="" id="acId">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <label for="fortId">Fort</label>
+      <select name="fort" class="custom-select" onchange="" id="fortId">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <label for="RefId">Ref</label>
+      <select name="ref" class="custom-select" onchange="" id="refId">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <label for="willId">Will</label>
+      <select name="will" class="custom-select" onchange="" id="willId">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+
+      <label for="hpId">HP</label>
+      <select name="hp" class="custom-select" onchange="" id="hpId">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
 
     </div>
 
@@ -225,6 +476,9 @@
   </form>
 
   <!-- OUT PUT FORM -->
+  <!--*******************************************************************-->
+  <!--*******************************************************************-->
+  <!--*******************************************************************-->
   <div class="container">
     <form id="outPutForm">
       <div class="form-row border-bottom-on">
@@ -235,17 +489,16 @@
           <input placeholder="0" type="text" class="no-outline" id="creatureCRout" readonly>
         </div>
       </div>
-      <div class="form-row ">
-        <div class="col" id="col-traits">
-          <!-- Trait elements generated here -->
-          <!--
-          <input id="creatureRare">
-          <input id="creatureAlign">
-          <input id="creatureSize">
-          <input id="creatureTrait">
-        -->
+      <!-- *************************************************************  -->
+      <div class="form-row">
+        <div class="col section-trait" id="col-traits">
+          <span id="rareT"></span>
+          <span id="alignT"></span>
+          <span id="sizeT"></span>
+          <span id="redT"></span>
         </div>
       </div>
+      <!-- **************************************************************  -->
 
       <div class="form-row">
         <div class="col inline-label">
@@ -256,8 +509,8 @@
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creatureLANGout">Languages </label>
-          <input type="text" class="no-outline" id="creatureLANGout" readonly>
+          <label for="creatureLanOut">Languages </label>
+          <input type="text" class="no-outline" id="creatureLanOut" readonly>
         </div>
       </div>
 
@@ -331,25 +584,25 @@
       <div class="form-row">
         <div class="col inline-label">
           <label for="">HP </label>
-          <input type="text" placeholder="AA" class="no-outline" id="" readonly>
+          <input type="text" placeholder="" class="no-outline" id="" readonly>
         </div>
       </div>
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Immunities </label>
-          <input type="text" placeholder="BBBBBBBBBBB BBB BBBBBBBBB" class="no-outline" id="">
+          <input type="text" placeholder="" class="no-outline" id="">
         </div>
       </div>
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Weaknesses </label>
-          <input type="text" placeholder="CCCC CCCCCCC CCCCCCCC" class="no-outline" id="">
+          <input type="text" placeholder="" class="no-outline" id="">
         </div>
       </div>
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Resistances </label>
-          <input type="text" placeholder="DDD DDDDDDD DDD DDDDDDDD" class="no-outline" id="">
+          <input type="text" placeholder="" class="no-outline" id="">
         </div>
       </div>
 
@@ -370,7 +623,7 @@
       <div class="form-row">
         <div class="col inline-label ">
           <label for="">Speed </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <input type="text" class="no-outline" id="creatureSpeedOut" readonly>
         </div>
       </div>
 
@@ -381,10 +634,7 @@
         </div>
       </div>
 
-
   </div>
   </form>
-
 </body>
-
 </html>
