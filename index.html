@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -17,7 +16,6 @@
   <script defer src="res/scripts/javascript.js"></script>
   <title>Reina Lalibertebaron</title>
 </head>
-
 <body>
 
   <!-- MultiStep Form -->
@@ -236,7 +234,7 @@
           <div class="col-sm-12">
 
             <label for="acro">Acrobatics</label>
-            <select name="acro" class="custom-select" onchange="" id="acroId">
+            <select name="acro" class="custom-select" onchange="skillUpdate('acroId','acro')" id="acroId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -245,7 +243,7 @@
             </select>
 
             <label for="arcaId">Arcana</label>
-            <select name="arca" class="custom-select" onchange="" id="arcaId">
+            <select name="arca" class="custom-select" onchange="skillUpdate('arcaId','arca')" id="arcaId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -254,7 +252,7 @@
             </select>
 
             <label for="athlId">Athletics</label>
-            <select name="athl" class="custom-select" onchange="" id="athlId">
+            <select name="athl" class="custom-select" onchange="skillUpdate('athlId','athl')" id="athlId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -263,7 +261,7 @@
             </select>
 
             <label for="crafId">Crafting</label>
-            <select name="craf" class="custom-select" onchange="" id="crafId">
+            <select name="craf" class="custom-select" onchange="skillUpdate('crafId','craf')" id="crafId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -272,7 +270,7 @@
             </select>
 
             <label for="deceId">Deception</label>
-            <select name="dece" class="custom-select" onchange="" id="deceId">
+            <select name="dece" class="custom-select" onchange="skillUpdate('deceId','dece')" id="deceId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -281,7 +279,7 @@
             </select>
 
             <label for="diplId">Diplomacy</label>
-            <select name="dipl" class="custom-select" onchange="" id="diplId">
+            <select name="dipl" class="custom-select" onchange="skillUpdate('diplId','dipl')" id="diplId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -290,7 +288,7 @@
             </select>
 
             <label for="intiId">Intimidation</label>
-            <select name="inti" class="custom-select" onchange="" id="intiId">
+            <select name="inti" class="custom-select" onchange="skillUpdate('intiId','inti')" id="intiId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -301,7 +299,7 @@
             <!-- lore here -->
 
             <label for="mediId">Medicine</label>
-            <select name="medi" class="custom-select" onchange="" id="mediId">
+            <select name="medi" class="custom-select" onchange="skillUpdate('mediId','medi')" id="mediId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -310,7 +308,7 @@
             </select>
 
             <label for="natuId">Nature</label>
-            <select name="natu" class="custom-select" onchange="" id="natuId">
+            <select name="natu" class="custom-select" onchange="skillUpdate('natuId','natu')" id="natuId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -319,7 +317,7 @@
             </select>
 
             <label for="occuId">Occultism</label>
-            <select name="occu" class="custom-select" onchange="" id="occuId">
+            <select name="occu" class="custom-select" onchange="skillUpdate('occuId','occu')" id="occuId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -328,7 +326,7 @@
             </select>
 
             <label for="perfId">Performance</label>
-            <select name="perf" class="custom-select" onchange="" id="perfId">
+            <select name="perf" class="custom-select" onchange="skillUpdate('perfId','perf')" id="perfId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -337,7 +335,7 @@
             </select>
 
             <label for="reliId">Religion</label>
-            <select name="reli" class="custom-select" onchange="" id="reliId">
+            <select name="reli" class="custom-select" onchange="skillUpdate('reliId','reli')" id="reliId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -346,7 +344,7 @@
             </select>
 
             <label for="sociId">Society</label>
-            <select name="soci" class="custom-select" onchange="" id="sociId">
+            <select name="soci" class="custom-select" onchange="skillUpdate('sociId','soci')" id="sociId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -355,7 +353,7 @@
             </select>
 
             <label for="steaId">Stealth</label>
-            <select name="stea" class="custom-select" onchange="" id="steaId">
+            <select name="stea" class="custom-select" onchange="skillUpdate('steaId','stea')" id="steaId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -364,7 +362,7 @@
             </select>
 
             <label for="survId">Survival</label>
-            <select name="surv" class="custom-select" onchange="" id="survId">
+            <select name="surv" class="custom-select" onchange="skillUpdate('survId','surv')" id="survId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -373,7 +371,7 @@
             </select>
 
             <label for="thieId">Thievery</label>
-            <select name="thie" class="custom-select" onchange="" id="thieId">
+            <select name="thie" class="custom-select" onchange="skillUpdate('thieId','thie')" id="thieId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
               <option value="1">High</option>
@@ -517,7 +515,7 @@
       <div class="form-row">
         <div class="col inline-label">
           <label for="creatureMODout">Skills </label>
-          <input type="text" class="no-outline" id="creatureMODout" readonly>
+          <textarea type="text" class="no-outline" id="creatureSkillout" readonly></textarea>
         </div>
       </div>
 

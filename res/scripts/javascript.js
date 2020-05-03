@@ -2,21 +2,40 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 var creature = {
-  baseline: "",
-  cr: "",
-  crIndex: "",
-  cha: "",
-  con: "",
-  dex: "",
-  int: "",
-  languages: "",
   name: "",
-  per: "",
+  baseline: "",
+  theme: "",
+  languages: "",
   size: "",
   speed: "",
+  cr: "",
+  crIndex: "",
+
+  per: "",
   str: "",
-  theme: "",
-  wis: ""
+  dex: "",
+  con: "",
+  int: "",
+  wis: "",
+  cha: "",
+
+  acro: "",
+  arca: "",
+  athl: "",
+  craf: "",
+  dece: "",
+  dipl: "",
+  inti: "",
+  medi: "",
+  natu: "",
+  occu: "",
+  perf: "",
+  reli: "",
+  soci: "",
+  stea: "",
+  surv: "",
+  thie: ""
+
 };
 
 let abilityModifierScales = [
@@ -271,6 +290,7 @@ function simpleTextUpdate(textIn, textOut, attr) {
   textOut.value = creature[attr];
 }
 
+//=======================================================================
 function creatureCRupdate() {
   var crElement = document.getElementById('creatureCRin');
   var crName = crElement.options[crElement.selectedIndex].getAttribute('name');
@@ -279,12 +299,14 @@ function creatureCRupdate() {
   creature.crIndex = document.getElementById('creatureCRin').value;
 }
 
+//=======================================================================
 function crePERupdate() {
   var mod = document.getElementById('crePERin').value;
   creature.per = perceptionScales[creature.crIndex][mod];
   document.getElementById('creaturePERout').value = creature.per;
 }
 
+//=======================================================================
 /************** add ability Modifiers****************/
 function abilityModUpdate(modIn, modOut, stat) {
   var mod = modIn.value;
@@ -292,6 +314,7 @@ function abilityModUpdate(modIn, modOut, stat) {
   modOut.value = creature[stat];
 }
 
+//=======================================================================
 /************** add traits to out put form *******************/
 function creatureTraitsUpdate(newTrait, newTraitId, parent) {
   /*get the element the user inputed information into */
@@ -337,6 +360,8 @@ function creatureTraitsUpdate(newTrait, newTraitId, parent) {
   }
 
 }
+
+//=======================================================================
 /*************************************************************************/
 /*************************************************************************/
 function redTraitUpdate(newTrait, parent) {
@@ -368,11 +393,61 @@ function redTraitUpdate(newTrait, parent) {
   element.value = "";
 }
 
+//=======================================================================
+/**********************************************************************/
+/**********************************************************************/
 
+function redTraitRemove() {
+  var element = document.getElementById('redT');
+  element.removeChild(element.lastChild);
+}
 
+//=======================================================================
+/**********************************************************************/
+/**********************************************************************/
 
+function skillUpdate(skillEl, skillName) {
+  var skillSelect = document.getElementById(skillEl).value;
+  var skillVal = skillsScales[creature.crIndex][skillSelect];
+  var skillStr;
 
-  function redTraitRemove() {
-        var element = document.getElementById('redT');
-        element.removeChild(element.lastChild);
+  if (skillName == 'acro') {
+    creature.acro = 'Acrobatics +'+skillVal+', ';
+  } else  if (skillName == 'arca'){
+    creature.arca = 'Arcana +'+skillVal+', ';
+  }else  if (skillName == 'athl'){
+    creature.athl = 'Athletics +'+skillVal+', ';
+  }else  if (skillName == 'craf'){
+    creature.craf = 'Crafting +'+skillVal+', ';
+  }else  if (skillName == 'dece'){
+    creature.dece = 'Deception +'+skillVal+', ';
+  }else  if (skillName == 'dipl'){
+    creature.dipl = 'Diplomacy +'+skillVal+', ';
+  }else  if (skillName == 'inti'){
+    creature.inti = 'Intimidation +'+skillVal+', ';
+  }else  if (skillName == 'medi'){
+    creature.medi = 'Medicine +'+skillVal+', ';
+  }else  if (skillName == 'natu'){
+    creature.natu = 'Nature +'+skillVal+', ';
+  }else  if (skillName == 'occu'){
+    creature.occu = 'Occultism +'+skillVal+', ';
+  }else  if (skillName == 'perf'){
+    creature.perf = 'Performance +'+skillVal+', ';
+  }else  if (skillName == 'reli'){
+    creature.reli = 'Religion +'+skillVal+', ';
+  }else  if (skillName == 'soci'){
+    creature.soci = 'Society +'+skillVal+', ';
+  }else  if (skillName == 'stea'){
+    creature.stea = 'Stealth +'+skillVal+', ';
+  }else  if (skillName == 'surv'){
+    creature.surv= 'Survival +'+skillVal+', ';
+  }else  if (skillName == 'thie'){
+    creature.thie = 'Thievery +'+skillVal+', ';
+  }else{
+    console.log('skill statment error');
   }
+
+  skillStr = creature.acro + creature.arca + creature.athl + creature.craf + creature.dece + creature.dipl + creature.inti + creature.medi + creature.natu + creature.occu + creature.perf + creature.reli + creature.soci + creature.stea + creature.surv + creature.thie;
+
+  document.getElementById('creatureSkillout').value = skillStr;
+}
