@@ -12,6 +12,13 @@
   width: auto;
 }
 
+textarea {
+	min-height: 5em;
+	max-height: 50vh;
+  resize: none;
+	width: 100%;
+}
+
 /*OUT PUT FORM STYLEING*/
 .inline-label {
   display: inline-block;
@@ -135,22 +142,30 @@ background-color: #eee;
 
 /* Make circles that indicate the steps of the form: */
 .step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
+  height: 50px;
+  width: 50px;
+  line-height: 115px;
+  margin-right: 20px;
+  background-color: black;
   border: none;
   border-radius: 50%;
   display: inline-block;
-  opacity: 0.5;
+  font-family: 'Manrope', sans-serif;
+  opacity: 1;
+  z-index: -1;
 }
 
 /* Mark the active step: */
 .step.active {
+  background-color: green;
   opacity: 1;
 }
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #4CAF50;
+  background-color: green;
+  opacity: 1;
+}
+
+.step-container {
 }

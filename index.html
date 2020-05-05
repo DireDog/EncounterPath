@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -16,6 +17,7 @@
   <script defer src="res/scripts/javascript.js"></script>
   <title>Reina Lalibertebaron</title>
 </head>
+
 <body>
 
   <!-- MultiStep Form -->
@@ -24,9 +26,9 @@
     <!-- One "tab" for each step in the form: -->
     <div class="tab">
       <!--creature name-->
-      <p><input placeholder="Creature Name" onchange="simpleTextUpdate(creatureNameIn,creatureNameOut,'name')" id="creatureNameIn"></p>
+      <p><input placeholder="Creature Name" onchange="simpleTextUpdate(nameIn,nameOut,'name')" id="nameIn"></p>
       <!--creature level-->
-      <select name="crLevel" class="custom-select" onchange="creatureCRupdate()" id="creatureCRin">
+      <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn">
         <option selected>Creature Level</option>
         <option value="0" name="-1">-1</option>
         <option value="1" name="0">0</option>
@@ -59,30 +61,30 @@
 
     <div class="tab">baseline templates(Optional)
       <!--baseline template for creature-->
-      <select name="baseline" class="custom-select" onchange="creatureBLupdate()" id="creatureBLin">
+      <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
         <option selected>Select Baseline</option>
-        <option value="0">Brute</option>
-        <option value="1">Magical Striker</option>
-        <option value="2">Skill Paragon</option>
-        <option value="3">Skirmisher</option>
-        <option value="4">Sniper</option>
-        <option value="5">Soldier</option>
-        <option value="6">Spellcaster</option>
+        <option value="0" name="Brute">Brute</option>
+        <option value="1" name="Magical Striker">Magical Striker</option>
+        <option value="2" name="Skill Paragon">Skill Paragon</option>
+        <option value="3" name="Skirmisher">Skirmisher</option>
+        <option value="4" name="Sniper">Sniper</option>
+        <option value="5" name="Soldier">Soldier</option>
+        <option value="6" name="Spellcaster">Spellcaster</option>
       </select>
     </div>
 
     <div class="tab">Themes:
       <!--theme for creature-->
-      <select name="Theme Trait" class="custom-select" onchange="creatureThemeUpdate()" id="creatureThemeIn">
+      <select name="Theme Trait" class="custom-select" onchange="themeUpdate('themeIn')" id="themeIn">
         <option selected>Select Theme (Optional)</option>
-        <option value="0">Aberration</option>
-        <option value="1">Aeon</option>
-        <option value="2">Air</option>
-        <option value="3">Angle</option>
-        <option value="4">Animal</option>
-        <option value="5">Archon</option>
-        <option value="6">Astral</option>
-        <option value="7">Azata</option>
+        <option value="0" name="Aberration">Aberration</option>
+        <option value="1" name="">Aeon</option>
+        <option value="2" name="">Air</option>
+        <option value="3" name="">Angle</option>
+        <option value="4" name="">Animal</option>
+        <option value="5" name="">Archon</option>
+        <option value="6" name="">Astral</option>
+        <option value="7" name="">Azata</option>
       </select>
     </div>
 
@@ -92,7 +94,7 @@
         <div class="row">
           <div class="col-sm-12">
 
-            <select name="Rarity" class="custom-select" onchange="creatureTraitsUpdate('creatureRarityIn','creatureRarity','rareT')" id="creatureRarityIn">
+            <select name="Rarity" class="custom-select" onchange="traitsUpdate('rarityIn','rarity','rareT')" id="rarityIn">
               <option selected>Creature Rarity</option>
               <option value="0" name="Common">Common</option>
               <option value="1" name="Uncommon">Uncommon</option>
@@ -105,7 +107,7 @@
         <div class="row">
           <div class="col-sm-12">
 
-            <select name="Alignment" class="custom-select" onchange="creatureTraitsUpdate('creatureAlignIn','creatureAlign','alignT')" id="creatureAlignIn">
+            <select name="Alignment" class="custom-select" onchange="traitsUpdate('alignIn','align','alignT')" id="alignIn">
               <option selected>Creature Alignment</option>
               <option value="0" name="LG">Lawful Good</option>
               <option value="1" name="LN">Lawful Neutral</option>
@@ -123,7 +125,7 @@
         <div class="row">
           <div class="col-sm-12">
 
-            <select name="Size" class="custom-select" onchange="creatureTraitsUpdate('creatureSizeIn','creatureSize','sizeT')" id="creatureSizeIn">
+            <select name="Size" class="custom-select" onchange="traitsUpdate('sizeIn','size','sizeT')" id="sizeIn">
               <option selected>Creature Size</option>
               <option value="0" name="Tiny">Tiny</option>
               <option value="1" name="Small">Small</option>
@@ -141,30 +143,28 @@
             <input placeholder="Traits" onchange="" id="redTraitIn" />
             <button type="button" onclick="redTraitUpdate('redTraitIn','redT')">Add Trait</button>
             <button type="button" onclick="redTraitRemove()"> Delete Trait </button>
-        <!-- ************************************************************** -->
+            <!-- ************************************************************** -->
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12">
 
-            <p><input placeholder="Languages" onchange="simpleTextUpdate(creatureLanIn,creatureLanOut,'languages')" id="creatureLanIn" /></p>
-
+            <p><input placeholder="Languages" onchange="simpleTextUpdate(lanIn,lanOut,'languages')" id="lanIn" /></p>
           </div>
         </div>
-
         <div class="row">
           <div class="col-sm-12">
 
-            <p><input placeholder="Speed" onchange="simpleTextUpdate(creatureSpeedIn,creatureSpeedOut,'speed')" id="creatureSpeedIn" /></p>
+            <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="tab">Perception and Ability Modifiers:<br><br>
-      <label for="crePERin">Perception</label>
-      <select name="selPER" class="custom-select" onchange="crePERupdate()" id="crePERin">
+      <label for="perIn">Perception</label>
+      <select name="selPER" class="custom-select" onchange="perUpdate()" id="perIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -173,8 +173,8 @@
         <option value="4">Terrible</option>
       </select>
 
-      <label for="creModSTRin">Strength</label>
-      <select name="STRmod" class="custom-select" onchange="abilityModUpdate(creModSTRin,creModSTRout,'str')" id="creModSTRin">
+      <label for="strAbiModIn">Strength</label>
+      <select name="strAbiMod" class="custom-select" onchange="abilityModUpdate(strAbiModIn,strAbiModOut,'str')" id="strAbiModIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -182,8 +182,8 @@
         <option value="3">Low</option>
       </select>
 
-      <label for="creModSTRin">Dexterity</label>
-      <select name="DEXmod" class="custom-select" onchange="abilityModUpdate(creModDEXin,creModDEXout,'dex')" id="creModDEXin">
+      <label for="dexAbiModIn">Dexterity</label>
+      <select name="dexAbiMod" class="custom-select" onchange="abilityModUpdate(dexAbiModIn,dexAbiModOut,'dex')" id="dexAbiModIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -191,8 +191,8 @@
         <option value="3">Low</option>
       </select>
 
-      <label for="creModCONin">Constitution</label>
-      <select name="CONmod" class="custom-select" onchange="abilityModUpdate(creModCONin,creModCONout,'con')" id="creModCONin">
+      <label for="conAbiModIn">Constitution</label>
+      <select name="conAbiMod" class="custom-select" onchange="abilityModUpdate(conAbiModIn,conAbiModOut,'con')" id="conAbiModIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -200,8 +200,8 @@
         <option value="3">Low</option>
       </select>
 
-      <label for="creModINTin">Intelligence</label>
-      <select name="INTmod" class="custom-select" onchange="abilityModUpdate(creModINTin,creModINTout,'int')" id="creModINTin">
+      <label for="intAbiModIn">Intelligence</label>
+      <select name="intAbiMod" class="custom-select" onchange="abilityModUpdate(intAbiModIn,intAbiModOut,'int')" id="intAbiModIn">
         <option selected>Select</option>
         <option value="0" name="Extreme">Extreme</option>
         <option value="1">High</option>
@@ -209,8 +209,8 @@
         <option value="3">Low</option>
       </select>
 
-      <label for="creModWISin">Wisdom</label>
-      <select name="WISmod" class="custom-select" onchange="abilityModUpdate(creModWISin,creModWISout,'wis')" id="creModWISin">
+      <label for="wisAbiModIn">Wisdom</label>
+      <select name="wisAbiMod" class="custom-select" onchange="abilityModUpdate(wisAbiModIn,wisAbiModOut,'wis')" id="wisAbiModIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -218,8 +218,8 @@
         <option value="3">Low</option>
       </select>
 
-      <label for="creModCHAin">Charisma</label>
-      <select name="CHAmod" class="custom-select" onchange="abilityModUpdate(creModCHAin,creModCHAout,'cha')" id="creModCHAin">
+      <label for="chaAbiModIn">Charisma</label>
+      <select name="chaAbiMod" class="custom-select" onchange="abilityModUpdate(chaAbiModIn,chaAbiModOut,'cha')" id="chaAbiModIn">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -384,10 +384,10 @@
       </div>
     </div>
 
-    <div class="tab">AC and HP:
+    <div class="tab">Defence:
 
       <label for="acId">AC</label>
-      <select name="ac" class="custom-select" onchange="" id="acId">
+      <select name="ac" class="custom-select" onchange="acUpdate()" id="acId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -396,7 +396,7 @@
       </select>
 
       <label for="fortId">Fort</label>
-      <select name="fort" class="custom-select" onchange="" id="fortId">
+      <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOutId,fort)" id="fortId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -405,7 +405,7 @@
       </select>
 
       <label for="RefId">Ref</label>
-      <select name="ref" class="custom-select" onchange="" id="refId">
+      <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOutId,ref)" id="refId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -414,7 +414,7 @@
       </select>
 
       <label for="willId">Will</label>
-      <select name="will" class="custom-select" onchange="" id="willId">
+      <select name="will" class="custom-select" onchange="saveUpdate(willId,willOutId,will)" id="willId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -423,7 +423,7 @@
       </select>
 
       <label for="hpId">HP</label>
-      <select name="hp" class="custom-select" onchange="" id="hpId">
+      <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
         <option value="1">High</option>
@@ -431,9 +431,28 @@
         <option value="3">Low</option>
       </select>
 
+      <lable>Immunities</label>
+        <textarea type="text" class="no-outline"></textarea>
+
+        <lable>Weaknesses</label>
+          <textarea type="text" class="no-outline"></textarea>
+
+          <lable>Resistances</label>
+            <textarea type="text" class="no-outline"></textarea>
+
+
     </div>
 
-    <div class="tab">Abilities:
+    <div class="tab">Defensive Abilities and Free Actions:
+
+      <button>new ability</button>
+      <span></span>
+      <!-- automatic or reactive? -->
+      <!-- name -->
+      <!-- actions -->
+      <!-- traits -->
+      <!-- description -->
+
 
     </div>
 
@@ -457,21 +476,29 @@
     </div>
 
     <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center;margin-top:40px;">
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
-      <span class="step"></span>
 
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-sm-12">
+          <div class="step-container" style="text-align:center;">
+            <span class="step">Name</span>
+            <span class="step">Baseline</span>
+            <span class="step">Theme</span>
+            <span class="step">General</span>
+            <span class="step">Modifiers</span>
+            <span class="step">Skills</span>
+            <span class="step">Defence</span>
+            <span class="step">Defence</span>
+            <span class="step">Strikes</span>
+            <span class="step">Offence</span>
+            <span class="step">Spells</span>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
+
+  <button type="button" onclick="debug()">deubg varibles</button>
 
   <!-- OUT PUT FORM -->
   <!--*******************************************************************-->
@@ -481,10 +508,10 @@
     <form id="outPutForm">
       <div class="form-row border-bottom-on">
         <div class="col">
-          <input placeholder="Creature Name" type="text" class="no-outline" id="creatureNameOut" readonly>
+          <input placeholder="Creature Name" type="text" class="no-outline" id="nameOut" readonly>
         </div>
         <div class="col">
-          <input placeholder="0" type="text" class="no-outline" id="creatureCRout" readonly>
+          <input placeholder="0" type="text" class="no-outline" id="crOut" readonly>
         </div>
       </div>
       <!-- *************************************************************  -->
@@ -500,103 +527,106 @@
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creaturePERout">Perception </label>
-          <input type="text" class="no-outline" id="creaturePERout" readonly>
+          <label for="perOut">Perception </label>
+          <input type="text" class="no-outline" id="perOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creatureLanOut">Languages </label>
-          <input type="text" class="no-outline" id="creatureLanOut" readonly>
+          <label for="lanOut">Languages </label>
+          <input type="text" class="no-outline" id="lanOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creatureMODout">Skills </label>
-          <textarea type="text" class="no-outline" id="creatureSkillout" readonly></textarea>
+          <label for="skillOut">Skills </label>
+          <textarea type="text" class="no-outline" id="skillOut" readonly></textarea>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creModSTRout">Str </label>
-          <input type="text" class="no-outline" id="creModSTRout" readonly>
+          <label for="strAbiModOut">Str </label>
+          <input type="text" class="no-outline" id="strAbiModOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="creModDEXout">Dex </label>
-          <input type="text" class="no-outline" id="creModDEXout" readonly>
+          <label for="dexAbiModOut">Dex </label>
+          <input type="text" class="no-outline" id="dexAbiModOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="creModCONout">Con </label>
-          <input type="text" class="no-outline" id="creModCONout" readonly>
+          <label for="conAbiModOut">Con </label>
+          <input type="text" class="no-outline" id="conAbiModOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="creModINTout">Int </label>
-          <input type="text" class="no-outline" id="creModINTout" readonly>
+          <label for="intAbiModOut">Int </label>
+          <input type="text" class="no-outline" id="intAbiModOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="creModWISout">Wis </label>
-          <input type="text" class="no-outline" id="creModWISout" readonly>
+          <label for="wisAbiModOut">Wis </label>
+          <input type="text" class="no-outline" id="wisAbiModOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="creModCHAout">Cha </label>
-          <input type="text" class="no-outline" id="creModCHAout" readonly>
+          <label for="chaAbiModOut">Cha </label>
+          <input type="text" class="no-outline" id="chaAbiModOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="creatureMODout">Items </label>
+          <label for="">Items </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row border-bottom-on">
         <div class="col inline-label ">
-          <label for="creatureMODout">Interaction Abilities </label>
+          <label for="">Interaction Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="">AC </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <label for="acOutId">AC </label>
+          <input type="text" class="no-outline" id="acOutId" readonly>
         </div>
         <div class="col inline-label">
-          <label for="">Fort </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <label for="fortOutId">Fort </label>
+          <input type="text" class="no-outline" id="fortOutId" readonly>
         </div>
         <div class="col inline-label">
-          <label for="">Ref </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <label for="refOutId">Ref </label>
+          <input type="text" class="no-outline" id="refOutId" readonly>
         </div>
         <div class="col inline-label">
-          <label for="">Will </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <label for="willOutId">Will </label>
+          <input type="text" class="no-outline" id="willOutId" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="">HP </label>
-          <input type="text" placeholder="" class="no-outline" id="" readonly>
+          <label for="hpOutId">HP </label>
+          <input type="text" placeholder="" class="no-outline" id="hpOutId" readonly>
         </div>
       </div>
+      <!--*************************-->
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Immunities </label>
           <input type="text" placeholder="" class="no-outline" id="">
         </div>
       </div>
+
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Weaknesses </label>
           <input type="text" placeholder="" class="no-outline" id="">
         </div>
       </div>
+
       <div class="form-row">
         <div class="col inline-label">
           <label for="">Resistances </label>
@@ -604,6 +634,8 @@
         </div>
       </div>
 
+
+      <!--*************************-->
       <div class="form-row">
         <div class="col inline-label ">
           <label for="">Automatic Abilities </label>
@@ -620,8 +652,8 @@
 
       <div class="form-row">
         <div class="col inline-label ">
-          <label for="">Speed </label>
-          <input type="text" class="no-outline" id="creatureSpeedOut" readonly>
+          <label for="speedOut">Speed </label>
+          <input type="text" class="no-outline" id="speedOut" readonly>
         </div>
       </div>
 
@@ -635,4 +667,5 @@
   </div>
   </form>
 </body>
+
 </html>

@@ -6,6 +6,8 @@ var creature = {
   baseline: "",
   theme: "",
   languages: "",
+  rarity: "",
+  align:"",
   size: "",
   speed: "",
   cr: "",
@@ -35,6 +37,7 @@ var creature = {
   stea: "",
   surv: "",
   thie: ""
+
 
 };
 
@@ -213,7 +216,7 @@ let hpScales = [
 ];
 
 
-
+//========================================================================//
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -230,14 +233,15 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
+  fixStepIndicator(n);
 }
 
+//======================================================================//
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
-  //if (n == 1 && !validateForm()) return false;
+  if (n == 1 && !validateForm()) return false;
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
@@ -252,21 +256,24 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+//======================================================================//
 function validateForm() {
   // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
+  var tabEls, elTags, i, valid = true;
+  tabEls = document.getElementsByClassName("tab");
+  elTags = tabEls[currentTab].getElementsByTagName("input");
+  /*
   // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
+  for (i = 0; i < elTags.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    if (elTags[i].value == "") {
       // add an "invalid" class to the field:
-      y[i].className += " invalid";
+      elTags[i].className += " invalid";
       // and set the current valid status to false:
       valid = false;
     }
   }
+*/
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -275,13 +282,19 @@ function validateForm() {
 }
 
 function fixStepIndicator(n) {
+  console.log('n:'+n);
   // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
+  var i, stepEls = document.getElementsByClassName("step");
+  for (i = 0; i < stepEls.length; i++) {
+    stepEls[i].className = stepEls[i].className.replace(" active", "");
   }
   //... and adds the "active" class to the current step:
-  x[n].className += " active";
+  stepEls[n].className += " active";
+
+  //remove finish from step if you go back
+  if(stepEls[n].className == "step finish active"){
+    stepEls[n].className = stepEls[n].className.replace(" finish", "");
+  }
 }
 
 //=======================================================================
@@ -291,19 +304,34 @@ function simpleTextUpdate(textIn, textOut, attr) {
 }
 
 //=======================================================================
-function creatureCRupdate() {
-  var crElement = document.getElementById('creatureCRin');
+function crUpdate() {
+  var crElement = document.getElementById('crIn');
   var crName = crElement.options[crElement.selectedIndex].getAttribute('name');
   creature.cr = "CREATURE " + crName;
-  document.getElementById("creatureCRout").value = creature.cr;
-  creature.crIndex = document.getElementById('creatureCRin').value;
+  document.getElementById("crOut").value = creature.cr;
+  creature.crIndex = document.getElementById('crIn').value;
 }
 
 //=======================================================================
-function crePERupdate() {
-  var mod = document.getElementById('crePERin').value;
+
+function blUpdate(newBl){
+  var element = document.getElementById(newBl);
+    var name = element.options[element.selectedIndex].getAttribute('name');
+    creature.baseline = name;
+}
+
+//=======================================================================
+
+function themeUpdate(newTheme){
+  var element = document.getElementById(newTheme);
+    var name = element.options[element.selectedIndex].getAttribute('name');
+    creature.theme = name;
+}
+//=======================================================================
+function perUpdate() {
+  var mod = document.getElementById('perIn').value;
   creature.per = perceptionScales[creature.crIndex][mod];
-  document.getElementById('creaturePERout').value = creature.per;
+  document.getElementById('perOut').value = creature.per;
 }
 
 //=======================================================================
@@ -316,12 +344,12 @@ function abilityModUpdate(modIn, modOut, stat) {
 
 //=======================================================================
 /************** add traits to out put form *******************/
-function creatureTraitsUpdate(newTrait, newTraitId, parent) {
+function traitsUpdate(newTrait, newTraitId, parent) {
   /*get the element the user inputed information into */
   var element = document.getElementById(newTrait);
   var name = element.options[element.selectedIndex].getAttribute('name');
   var nameLen = name.length;
-  /* console.log(nameLen); */
+  creature[newTraitId] = name;
 
   /* type set is not monospace so trim some white space from ends of long strings */
   if (nameLen >= 10) {
@@ -333,9 +361,7 @@ function creatureTraitsUpdate(newTrait, newTraitId, parent) {
   } else if (nameLen <= 2) {
     nameLen = nameLen + 1;
   }
-
   nameLen = nameLen + 'em';
-  /*console.log(nameLen);*/
 
   /*actually make the new element to be added and set its Attributes*/
   var input = document.createElement("INPUT");
@@ -356,7 +382,7 @@ function creatureTraitsUpdate(newTrait, newTraitId, parent) {
   } else if (typeof(elInputExists) == 'undefined' && elInputExists == null) {
     inputElement.appendChild(input);
   } else {
-    console.log("error in creatureTraitUpdate()");
+    console.log("error in traitUpdate()");
   }
 
 }
@@ -449,5 +475,64 @@ function skillUpdate(skillEl, skillName) {
 
   skillStr = creature.acro + creature.arca + creature.athl + creature.craf + creature.dece + creature.dipl + creature.inti + creature.medi + creature.natu + creature.occu + creature.perf + creature.reli + creature.soci + creature.stea + creature.surv + creature.thie;
 
-  document.getElementById('creatureSkillout').value = skillStr;
+  document.getElementById('skillOut').value = skillStr;
+}
+
+//=====================================================================//
+function acUpdate() {
+  var mod = document.getElementById('acId').value;
+  creature.ac = acScales[creature.crIndex][mod];
+  document.getElementById('acOutId').value = creature.ac;
+}
+
+//=====================================================================//
+function saveUpdate(saveIn,saveOut,saveName) {
+  var mod = saveIn.value;
+  creature[saveName] = savingThrowScales[creature.crIndex][mod];
+  saveOut.value = creature[saveName];
+}
+
+//=====================================================================//
+function hpUpdate() {
+  var mod = document.getElementById('hpId').value;
+  creature.hp = hpScales[creature.crIndex][mod];
+  document.getElementById('hpOutId').value = creature.hp;
+}
+
+//=====================================================================//
+
+function debug() {
+  console.log('name: '+ creature.name);
+  console.log('baseline: '+creature.baseline);
+  console.log('theme: '+creature.theme);
+  console.log('languages: '+creature.languages);
+  console.log('rarity: '+creature.rarity);
+  console.log('align: '+creature.align);
+  console.log('size: '+creature.size);
+  console.log('speed: '+creature.speed);
+  console.log('cr: '+creature.cr);
+  console.log('crIndex: '+creature.crIndex);
+  console.log('per: '+creature.per);
+  console.log('str: '+creature.str);
+  console.log('dex: '+creature.dex);
+  console.log('con: '+creature.con);
+  console.log('int: '+creature.int);
+  console.log('wis: '+creature.wis);
+  console.log('cha: '+creature.cha);
+  console.log('acro: '+creature.acro);
+  console.log('arca: '+creature.arca);
+  console.log('athl: '+creature.athl);
+  console.log('craf: '+creature.craf);
+  console.log('dece: '+creature.dece);
+  console.log('dipl: '+creature.dipl);
+  console.log('inti: '+creature.inti);
+  console.log('medi: '+creature.medi);
+  console.log('natu: '+creature.natu);
+  console.log('occu: '+creature.occu);
+  console.log('perf: '+creature.perf);
+  console.log('reli: '+creature.reli);
+  console.log('soci: '+creature.soci);
+  console.log('stea: '+creature.stea);
+  console.log('surv: '+creature.surv);
+  console.log('thie: '+creature.thie);
 }
