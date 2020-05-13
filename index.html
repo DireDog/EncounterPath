@@ -26,51 +26,54 @@
     <!-- One "tab" for each step in the form: -->
     <div class="tab">
       <!--creature name-->
-      <p><input placeholder="Creature Name" onchange="simpleTextUpdate(nameIn,nameOut,'name')" id="nameIn"></p>
-      <!--creature level-->
-      <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn">
-        <option selected>Creature Level</option>
-        <option value="0" name="-1">-1</option>
-        <option value="1" name="0">0</option>
-        <option value="2" name="1">1</option>
-        <option value="3" name="2">2</option>
-        <option value="4" name="3">3</option>
-        <option value="5" name="4">4</option>
-        <option value="6" name="5">5</option>
-        <option value="7" name="6">6</option>
-        <option value="8" name="7">7</option>
-        <option value="9" name="8">8</option>
-        <option value="10" name="9">9</option>
-        <option value="11" name="10">10</option>
-        <option value="12" name="11">11</option>
-        <option value="13" name="12">12</option>
-        <option value="14" name="13">13</option>
-        <option value="15" name="14">14</option>
-        <option value="16" name="15">15</option>
-        <option value="17" name="16">16</option>
-        <option value="18" name="17">17</option>
-        <option value="19" name="18">18</option>
-        <option value="20" name="19">19</option>
-        <option value="21" name="20">20</option>
-        <option value="22" name="21">21</option>
-        <option value="23" name="22">22</option>
-        <option value="24" name="23">23</option>
-        <option value="25" name="24">24</option>
-      </select>
+      <lable>Name: </label>
+        <p><input placeholder="Creature Name" onchange="simpleTextUpdate(nameIn,nameOut,'name')" id="nameIn"></p>
+        <!--creature level-->
+        <lable>CR: </label>
+          <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn">
+            <option selected>Creature Level</option>
+            <option value="0" name="-1">-1</option>
+            <option value="1" name="0">0</option>
+            <option value="2" name="1">1</option>
+            <option value="3" name="2">2</option>
+            <option value="4" name="3">3</option>
+            <option value="5" name="4">4</option>
+            <option value="6" name="5">5</option>
+            <option value="7" name="6">6</option>
+            <option value="8" name="7">7</option>
+            <option value="9" name="8">8</option>
+            <option value="10" name="9">9</option>
+            <option value="11" name="10">10</option>
+            <option value="12" name="11">11</option>
+            <option value="13" name="12">12</option>
+            <option value="14" name="13">13</option>
+            <option value="15" name="14">14</option>
+            <option value="16" name="15">15</option>
+            <option value="17" name="16">16</option>
+            <option value="18" name="17">17</option>
+            <option value="19" name="18">18</option>
+            <option value="20" name="19">19</option>
+            <option value="21" name="20">20</option>
+            <option value="22" name="21">21</option>
+            <option value="23" name="22">22</option>
+            <option value="24" name="23">23</option>
+            <option value="25" name="24">24</option>
+          </select>
     </div>
 
     <div class="tab">baseline templates(Optional)
       <!--baseline template for creature-->
-      <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
-        <option selected>Select Baseline</option>
-        <option value="0" name="Brute">Brute</option>
-        <option value="1" name="Magical Striker">Magical Striker</option>
-        <option value="2" name="Skill Paragon">Skill Paragon</option>
-        <option value="3" name="Skirmisher">Skirmisher</option>
-        <option value="4" name="Sniper">Sniper</option>
-        <option value="5" name="Soldier">Soldier</option>
-        <option value="6" name="Spellcaster">Spellcaster</option>
-      </select>
+      <lable>baseline templates(Optional) </label>
+        <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
+          <option selected>Select Baseline</option>
+          <option value="0" name="Brute">Brute</option>
+          <option value="1" name="Magical Striker">Magical Striker</option>
+          <option value="2" name="Skill Paragon">Skill Paragon</option>
+          <option value="3" name="Skirmisher">Skirmisher</option>
+          <option value="4" name="Sniper">Sniper</option>
+          <option value="5" name="Soldier">Soldier</option>
+          <option value="6" name="Spellcaster">Spellcaster</option>
+        </select>
     </div>
 
     <div class="tab">Themes:
@@ -88,152 +91,185 @@
       </select>
     </div>
 
-    <div class="tab">Basic Information:
+    <div class="tab">
 
       <div class="container">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-4">
+            <!-- creture raity-->
+            <lable>Rarity: </label>
+              <select name="Rarity" class="custom-select" onchange="traitsUpdate('rarityIn','rarity','rareT')" id="rarityIn">
+                <option selected>Creature Rarity</option>
+                <option value="0" name="Common">Common</option>
+                <option value="1" name="Uncommon">Uncommon</option>
+                <option value="2" name="Rare">Rare</option>
+                <option value="3" name="Unique">Unique</option>
+              </select>
 
-            <select name="Rarity" class="custom-select" onchange="traitsUpdate('rarityIn','rarity','rareT')" id="rarityIn">
-              <option selected>Creature Rarity</option>
-              <option value="0" name="Common">Common</option>
-              <option value="1" name="Uncommon">Uncommon</option>
-              <option value="2" name="Rare">Rare</option>
-              <option value="3" name="Unique">Unique</option>
-            </select>
+          </div>
+
+
+          <div class="col-sm-4">
+            <!-- creature alignment-->
+            <lable>Alignment: </label>
+              <select name="Alignment" class="custom-select" onchange="traitsUpdate('alignIn','align','alignT')" id="alignIn">
+                <option selected>Creature Alignment</option>
+                <option value="0" name="LG">Lawful Good</option>
+                <option value="1" name="LN">Lawful Neutral</option>
+                <option value="2" name="LE">Lawful Evil</option>
+                <option value="3" name="NG">Neutral Good</option>
+                <option value="4" name="N">True Neutral</option>
+                <option value="5" name="NE">Neutral Evil</option>
+                <option value="6" name="CG">Chaotic Good</option>
+                <option value="7" name="CN">Chaotic Neutral</option>
+                <option value="8" name="CE">Chaotic Evil</option>
+              </select>
+
+          </div>
+
+          <div class="col-sm-4">
+            <lable>Size: </label>
+              <!-- creature size -->
+              <select name="Size" class="custom-select" onchange="traitsUpdate('sizeIn','size','sizeT')" id="sizeIn">
+                <option selected>Creature Size</option>
+                <option value="0" name="Tiny">Tiny</option>
+                <option value="1" name="Small">Small</option>
+                <option value="2" name="Medium">Medium</option>
+                <option value="3" name="Large">Large</option>
+                <option value="4" name="Huge">Huge</option>
+                <option value="5" name="Gargantuan">Gargantuan</option>
+              </select>
 
           </div>
         </div>
+        <!---->
         <div class="row">
           <div class="col-sm-12">
-
-            <select name="Alignment" class="custom-select" onchange="traitsUpdate('alignIn','align','alignT')" id="alignIn">
-              <option selected>Creature Alignment</option>
-              <option value="0" name="LG">Lawful Good</option>
-              <option value="1" name="LN">Lawful Neutral</option>
-              <option value="2" name="LE">Lawful Evil</option>
-              <option value="3" name="NG">Neutral Good</option>
-              <option value="4" name="N">True Neutral</option>
-              <option value="5" name="NE">Neutral Evil</option>
-              <option value="6" name="CG">Chaotic Good</option>
-              <option value="7" name="CN">Chaotic Neutral</option>
-              <option value="8" name="CE">Chaotic Evil</option>
-            </select>
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-
-            <select name="Size" class="custom-select" onchange="traitsUpdate('sizeIn','size','sizeT')" id="sizeIn">
-              <option selected>Creature Size</option>
-              <option value="0" name="Tiny">Tiny</option>
-              <option value="1" name="Small">Small</option>
-              <option value="2" name="Medium">Medium</option>
-              <option value="3" name="Large">Large</option>
-              <option value="4" name="Huge">Huge</option>
-              <option value="5" name="Gargantuan">Gargantuan</option>
-            </select>
-
-          </div>
-        </div>
-        <!--/**************************************************************/-->
-        <div class="row">
-          <div class="col-sm-12">
-            <input placeholder="Traits" onchange="" id="redTraitIn" />
-            <button type="button" onclick="redTraitUpdate('redTraitIn','redT')">Add Trait</button>
-            <button type="button" onclick="redTraitRemove()"> Delete Trait </button>
-            <!-- ************************************************************** -->
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-
-            <p><input placeholder="Languages" onchange="simpleTextUpdate(lanIn,lanOut,'languages')" id="lanIn" /></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-
-            <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
+            <!-- traits -->
+            <lable>Traits: </label>
+              <input placeholder="Traits" onchange="redTraitUpdate('redTraitIn','redT')" id="redTraitIn" />
+              <!---->
           </div>
         </div>
       </div>
     </div>
 
     <div class="tab">Perception and Ability Modifiers:<br><br>
-      <label for="perIn">Perception</label>
-      <select name="selPER" class="custom-select" onchange="perUpdate()" id="perIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-        <option value="4">Terrible</option>
-      </select>
 
-      <label for="strAbiModIn">Strength</label>
-      <select name="strAbiMod" class="custom-select" onchange="abilityModUpdate(strAbiModIn,strAbiModOut,'str')" id="strAbiModIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+      <div class="row">
+        <div class="col-sm-2">
+          <label for="perIn">Perception: </label>
+          <!--perception-->
 
-      <label for="dexAbiModIn">Dexterity</label>
-      <select name="dexAbiMod" class="custom-select" onchange="abilityModUpdate(dexAbiModIn,dexAbiModOut,'dex')" id="dexAbiModIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+          <select name="selPER" class="custom-select" onchange="perUpdate()" id="perIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+            <option value="4">Terrible</option>
+          </select>
+        </div>
+        <div class="col-sm-10">
+          <label for="perIn">Senses: </label>
+          <!-- known languages -->
 
-      <label for="conAbiModIn">Constitution</label>
-      <select name="conAbiMod" class="custom-select" onchange="abilityModUpdate(conAbiModIn,conAbiModOut,'con')" id="conAbiModIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+          <p><input placeholder="Senses" onchange="" id="lanIn" /></p>
+        </div>
+      </div>
 
-      <label for="intAbiModIn">Intelligence</label>
-      <select name="intAbiMod" class="custom-select" onchange="abilityModUpdate(intAbiModIn,intAbiModOut,'int')" id="intAbiModIn">
-        <option selected>Select</option>
-        <option value="0" name="Extreme">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
 
-      <label for="wisAbiModIn">Wisdom</label>
-      <select name="wisAbiMod" class="custom-select" onchange="abilityModUpdate(wisAbiModIn,wisAbiModOut,'wis')" id="wisAbiModIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- known languages -->
+          <label for="perIn">Languages: </label>
+          <p><input placeholder="Languages" onchange="simpleTextUpdate(lanIn,lanOut,'languages')" id="lanIn" /></p>
+        </div>
+      </div>
 
-      <label for="chaAbiModIn">Charisma</label>
-      <select name="chaAbiMod" class="custom-select" onchange="abilityModUpdate(chaAbiModIn,chaAbiModOut,'cha')" id="chaAbiModIn">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="strAbiModIn">Strength: </label>
+          <!-- strength -->
+          <select name="strAbiMod" class="custom-select" onchange="abilityModUpdate(strAbiModIn,strAbiModOut,'str')" id="strAbiModIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="dexAbiModIn">Dexterity: </label>
+          <!--dexterity-->
+          <select name="dexAbiMod" class="custom-select" onchange="abilityModUpdate(dexAbiModIn,dexAbiModOut,'dex')" id="dexAbiModIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="conAbiModIn">Constitution: </label>
+          <!--constitution-->
+          <select name="conAbiMod" class="custom-select" onchange="abilityModUpdate(conAbiModIn,conAbiModOut,'con')" id="conAbiModIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="intAbiModIn">Intelligence: </label>
+          <!--intellignce-->
+
+          <select name="intAbiMod" class="custom-select" onchange="abilityModUpdate(intAbiModIn,intAbiModOut,'int')" id="intAbiModIn">
+            <option selected>Select</option>
+            <option value="0" name="Extreme">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="wisAbiModIn">Wisdom: </label>
+          <!-- wisdom -->
+          <select name="wisAbiMod" class="custom-select" onchange="abilityModUpdate(wisAbiModIn,wisAbiModOut,'wis')" id="wisAbiModIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="chaAbiModIn">Charisma: </label>
+          <!-- charisma -->
+          <select name="chaAbiMod" class="custom-select" onchange="abilityModUpdate(chaAbiModIn,chaAbiModOut,'cha')" id="chaAbiModIn">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+      </div>\
     </div>
 
     <div class="tab">Skills:
       <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
 
-            <label for="acro">Acrobatics</label>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="acro">Acrobatics: </label>
             <select name="acro" class="custom-select" onchange="skillUpdate('acroId','acro')" id="acroId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -241,8 +277,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="arcaId">Arcana</label>
+          <div class="col-sm-3">
+            <label for="arcaId">Arcana: </label>
             <select name="arca" class="custom-select" onchange="skillUpdate('arcaId','arca')" id="arcaId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -250,8 +288,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="athlId">Athletics</label>
+          <div class="col-sm-3">
+            <label for="athlId">Athletics: </label>
             <select name="athl" class="custom-select" onchange="skillUpdate('athlId','athl')" id="athlId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -259,8 +299,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="crafId">Crafting</label>
+          <div class="col-sm-3">
+            <label for="crafId">Crafting: </label>
             <select name="craf" class="custom-select" onchange="skillUpdate('crafId','craf')" id="crafId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -268,8 +310,12 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
+        </div>
 
-            <label for="deceId">Deception</label>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="deceId">Deception: </label>
             <select name="dece" class="custom-select" onchange="skillUpdate('deceId','dece')" id="deceId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -277,8 +323,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="diplId">Diplomacy</label>
+          <div class="col-sm-3">
+            <label for="diplId">Diplomacy: </label>
             <select name="dipl" class="custom-select" onchange="skillUpdate('diplId','dipl')" id="diplId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -286,8 +334,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="intiId">Intimidation</label>
+          <div class="col-sm-3">
+            <label for="intiId">Intimidation: </label>
             <select name="inti" class="custom-select" onchange="skillUpdate('intiId','inti')" id="intiId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -295,10 +345,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <!-- lore here -->
-
-            <label for="mediId">Medicine</label>
+          <div class="col-sm-3">
+            <label for="mediId">Medicine: </label>
             <select name="medi" class="custom-select" onchange="skillUpdate('mediId','medi')" id="mediId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -306,8 +356,12 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
+        </div>
 
-            <label for="natuId">Nature</label>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="natuId">Nature: </label>
             <select name="natu" class="custom-select" onchange="skillUpdate('natuId','natu')" id="natuId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -315,8 +369,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="occuId">Occultism</label>
+          <div class="col-sm-3">
+            <label for="occuId">Occultism: </label>
             <select name="occu" class="custom-select" onchange="skillUpdate('occuId','occu')" id="occuId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -324,8 +380,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="perfId">Performance</label>
+          <div class="col-sm-3">
+            <label for="perfId">Performance: </label>
             <select name="perf" class="custom-select" onchange="skillUpdate('perfId','perf')" id="perfId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -333,8 +391,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="reliId">Religion</label>
+          <div class="col-sm-3">
+            <label for="reliId">Religion: </label>
             <select name="reli" class="custom-select" onchange="skillUpdate('reliId','reli')" id="reliId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -342,8 +402,12 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
+        </div>
 
-            <label for="sociId">Society</label>
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="sociId">Society: </label>
             <select name="soci" class="custom-select" onchange="skillUpdate('sociId','soci')" id="sociId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -351,8 +415,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="steaId">Stealth</label>
+          <div class="col-sm-3">
+            <label for="steaId">Stealth: </label>
             <select name="stea" class="custom-select" onchange="skillUpdate('steaId','stea')" id="steaId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -360,8 +426,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="survId">Survival</label>
+          <div class="col-sm-3">
+            <label for="survId">Survival: </label>
             <select name="surv" class="custom-select" onchange="skillUpdate('survId','surv')" id="survId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -369,8 +437,10 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
+          </div>
 
-            <label for="thieId">Thievery</label>
+          <div class="col-sm-3">
+            <label for="thieId">Thievery: </label>
             <select name="thie" class="custom-select" onchange="skillUpdate('thieId','thie')" id="thieId">
               <option selected>Select</option>
               <option value="0">Extreme</option>
@@ -378,51 +448,94 @@
               <option value="2">Moderate</option>
               <option value="3">Low</option>
             </select>
-
           </div>
         </div>
+
+        <div class="row loreEntry" style="">
+          <div col-12>
+            <label for="">Lore Skill: </label>
+
+            <span class="loreEntry"style="white-space:nowrap;">
+
+              <input placeholder="New Lore Skill" onchange="" id="" />
+
+              <select name="" style="margin-top: 22px; height:50px; width:10em;" class="custom-select" onchange="skillUpdate()" id="">
+                <option selected>Select</option>
+                <option value="0">Extreme</option>
+                <option value="1">High</option>
+                <option value="2">Moderate</option>
+                <option value="3">Low</option>
+
+              </select>
+
+            </span>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
+    </div>
 
-    <div class="tab">Defence:
 
-      <label for="acId">AC</label>
-      <select name="ac" class="custom-select" onchange="acUpdate()" id="acId">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
 
-      <label for="fortId">Fort</label>
-      <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOutId,fort)" id="fortId">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+    <div class="tab">
 
-      <label for="RefId">Ref</label>
-      <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOutId,ref)" id="refId">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="acId">AC: </label>
+          <!--ac-->
+          <select name="ac" class="custom-select" onchange="acUpdate()" id="acId">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
 
-      <label for="willId">Will</label>
-      <select name="will" class="custom-select" onchange="saveUpdate(willId,willOutId,will)" id="willId">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
+        <div class="col-sm-3">
+          <label for="fortId">Fort: </label>
+          <!--fortitude-->
+          <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOutId,fort)" id="fortId">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
 
-      <label for="hpId">HP</label>
+        <div class="col-sm-3">
+          <label for="RefId">Ref: </label>
+          <!--reflex-->
+          <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOutId,ref)" id="refId">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+
+        <div class="col-sm-3">
+          <label for="willId">Will: </label>
+          <!--will-->
+          <select name="will" class="custom-select" onchange="saveUpdate(willId,willOutId,will)" id="willId">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col-sm-3">
+      <label for="hpId">HP: </label>
+      <!--hp-->
       <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -430,21 +543,30 @@
         <option value="2">Moderate</option>
         <option value="3">Low</option>
       </select>
+    </div>
+      <div class="col-sm-9">
+        <label for="hpId">Regenerration and Healing Abilites: </label>
+        <textarea type="text" class="no-outline"></textarea>
+      </div>
+    </div>
 
-      <lable>Immunities</label>
+      <lable>Immunities: </label>
         <textarea type="text" class="no-outline"></textarea>
 
-        <lable>Weaknesses</label>
+        <lable>Weaknesses: </label>
           <textarea type="text" class="no-outline"></textarea>
 
-          <lable>Resistances</label>
+          <lable>Resistances: </label>
             <textarea type="text" class="no-outline"></textarea>
 
-
+            <!-- creature speed-->
+            <lable>Speed: </label>
+              <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
     </div>
 
     <div class="tab">Defensive Abilities and Free Actions:
-
+      <label for="">Automatic Abilities: </label>
+      <label for="">Reactive Ability</label>
       <button>new ability</button>
       <span></span>
       <!-- automatic or reactive? -->
@@ -457,6 +579,30 @@
     </div>
 
     <div class="tab">Strikes:
+      <!-- name -->
+      <input placeholder="name" onchange="" id="" />
+      <!-- attack mod-->
+      <label for="">Attack Modifier: </label>
+      <select name="" class="custom-select" onchange="" id="">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+      <!-- (traits)-->
+      <!-- damage amount-->
+      <label for="">Damage: </label>
+      <!--fortitude-->
+      <select name="" class="custom-select" onchange="" id="">
+        <option selected>Select</option>
+        <option value="0">Extreme</option>
+        <option value="1">High</option>
+        <option value="2">Moderate</option>
+        <option value="3">Low</option>
+      </select>
+      <!-- damage type-->
+      <!-- additional effects-->
 
     </div>
 
@@ -498,23 +644,24 @@
     </div>
   </form>
 
-  <button type="button" onclick="debug()">deubg varibles</button>
+  <button type="button" onclick="debug()">debug vars</button>
 
+  <!-- -->
+  <!-- -->
+  <!-- -->
   <!-- OUT PUT FORM -->
-  <!--*******************************************************************-->
-  <!--*******************************************************************-->
-  <!--*******************************************************************-->
   <div class="container">
     <form id="outPutForm">
-      <div class="form-row border-bottom-on">
+      <div class="form-row">
         <div class="col">
-          <input placeholder="Creature Name" type="text" class="no-outline" id="nameOut" readonly>
-        </div>
-        <div class="col">
-          <input placeholder="0" type="text" class="no-outline" id="crOut" readonly>
+          <span>
+            <input placeholder="Creature Name" type="text" class="no-outline" id="nameOut" readonly>
+            <input placeholder="0" type="text" class="no-outline" id="crOut" readonly>
+          </span>
         </div>
       </div>
-      <!-- *************************************************************  -->
+      <div style="border-bottom: 3px solid black"></div>
+      <!---->
       <div class="form-row">
         <div class="col section-trait" id="col-traits">
           <span id="rareT"></span>
@@ -523,21 +670,13 @@
           <span id="redT"></span>
         </div>
       </div>
-      <!-- **************************************************************  -->
+      <!---->
 
       <div class="form-row">
-        <div class="col inline-label">
-          <label for="perOut">Perception </label>
-          <input type="text" class="no-outline" id="perOut" readonly>
-        </div>
+
       </div>
 
-      <div class="form-row">
-        <div class="col inline-label">
-          <label for="lanOut">Languages </label>
-          <input type="text" class="no-outline" id="lanOut" readonly>
-        </div>
-      </div>
+
 
       <div class="form-row">
         <div class="col inline-label">
@@ -547,6 +686,18 @@
       </div>
 
       <div class="form-row">
+        <div class="col inline-label">
+          <label for="perOut">Perception </label>
+          <input type="text" style="width:5em" class="no-outline" id="perOut" readonly>
+        </div>
+
+        <div class="form-row">
+          <div class="col inline-label">
+            <label for="lanOut">Languages </label>
+            <input type="text" class="no-outline" id="lanOut" readonly>
+          </div>
+        </div>
+
         <div class="col inline-label">
           <label for="strAbiModOut">Str </label>
           <input type="text" class="no-outline" id="strAbiModOut" readonly>
@@ -580,12 +731,13 @@
         </div>
       </div>
 
-      <div class="form-row border-bottom-on">
+      <div class="form-row">
         <div class="col inline-label ">
           <label for="">Interaction Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
+      <div style="border-bottom: 3px solid black"></div>
 
       <div class="form-row">
         <div class="col inline-label">
@@ -608,13 +760,12 @@
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="hpOutId">HP </label>
-          <input type="text" placeholder="" class="no-outline" id="hpOutId" readonly>
+          <!--<label for="hpOutId">HP </label>-->
+          <input type="text" placeholder="HP" class="no-outline" id="hpOutId" readonly>
         </div>
       </div>
-      <!--*************************-->
-      <div class="form-row">
-        <div class="col inline-label">
+      <!---->
+      <!--
           <label for="">Immunities </label>
           <input type="text" placeholder="" class="no-outline" id="">
         </div>
@@ -631,11 +782,11 @@
         <div class="col inline-label">
           <label for="">Resistances </label>
           <input type="text" placeholder="" class="no-outline" id="">
+
         </div>
       </div>
 
-
-      <!--*************************-->
+      <!---->
       <div class="form-row">
         <div class="col inline-label ">
           <label for="">Automatic Abilities </label>
@@ -643,12 +794,13 @@
         </div>
       </div>
 
-      <div class="form-row border-bottom-on">
+      <div class="form-row">
         <div class="col inline-label ">
           <label for="">Reactive Abilities </label>
           <input type="text" class="no-outline" id="" readonly>
         </div>
       </div>
+      <div style="border-bottom: 3px solid black"></div>
 
       <div class="form-row">
         <div class="col inline-label ">

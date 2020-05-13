@@ -1,4 +1,5 @@
 
+
 /* Style the form */
 #buildForm {
   background-color: #ffffff;
@@ -9,7 +10,7 @@
 }
 
 #redTraitIn {
-  width: auto;
+  width: 100%;
 }
 
 textarea {
@@ -28,9 +29,6 @@ textarea {
   display: inline;
 }
 
-.inline-label .no-outline{
-}
-
 .custom-select{
   margin-bottom: 25px;
 }
@@ -46,25 +44,23 @@ textarea {
 	margin: 100px auto;
 	padding: 40px;
   white-space: normal;
-	min-width: 700px;
-}
-
-.border-bottom-on{
-  border-bottom: 3px solid black;
+	width: 700px;
 }
 
 /* TOP SECTIONS */
-#creatureNameOut{
+#nameOut{
   font-family: 'Manrope', sans-serif;
   font-size: 28px;
   font-weight: bold;
+  width: 66%;
 }
 
-#creatureCRout{
+#crOut{
   font-family: 'Manrope', sans-serif;
   font-size: 28px;
   font-weight: bold;
   text-align: right;
+  width: 33.4%;
 }
 
 
