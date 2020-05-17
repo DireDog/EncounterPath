@@ -30,8 +30,8 @@
         <p><input placeholder="Creature Name" onchange="simpleTextUpdate(nameIn,nameOut,'name')" id="nameIn"></p>
         <!--creature level-->
         <lable>CR: </label>
-          <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn">
-            <option selected>Creature Level</option>
+          <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn" required>
+            <option value="">Creature Level</option>
             <option value="0" name="-1">-1</option>
             <option value="1" name="0">0</option>
             <option value="2" name="1">1</option>
@@ -81,13 +81,13 @@
       <select name="Theme Trait" class="custom-select" onchange="themeUpdate('themeIn')" id="themeIn">
         <option selected>Select Theme (Optional)</option>
         <option value="0" name="Aberration">Aberration</option>
-        <option value="1" name="">Aeon</option>
-        <option value="2" name="">Air</option>
-        <option value="3" name="">Angle</option>
-        <option value="4" name="">Animal</option>
-        <option value="5" name="">Archon</option>
-        <option value="6" name="">Astral</option>
-        <option value="7" name="">Azata</option>
+        <option value="1" name="Aeon">Aeon</option>
+        <option value="2" name="Air">Air</option>
+        <option value="3" name="Angle">Angle</option>
+        <option value="4" name="Animal">Animal</option>
+        <option value="5" name="Archon">Archon</option>
+        <option value="6" name="Astral">Astral</option>
+        <option value="7" name="Azata">Azata</option>
       </select>
     </div>
 
@@ -147,20 +147,20 @@
           <div class="col-sm-12">
             <!-- traits -->
             <lable>Traits: </label>
-              <input placeholder="Traits" onchange="redTraitUpdate('redTraitIn','redT')" id="redTraitIn" />
+              <input placeholder="Traits" onchange="genTraitUpdate('genTraitIn')" id="genTraitIn" />
               <!---->
           </div>
         </div>
       </div>
+      <div><br></div>
     </div>
 
+<!-- MODIFIERS -->
     <div class="tab">Perception and Ability Modifiers:<br><br>
-
       <div class="row">
+
         <div class="col-sm-2">
           <label for="perIn">Perception: </label>
-          <!--perception-->
-
           <select name="selPER" class="custom-select" onchange="perUpdate()" id="perIn">
             <option selected>Select</option>
             <option value="0">Extreme</option>
@@ -170,20 +170,18 @@
             <option value="4">Terrible</option>
           </select>
         </div>
-        <div class="col-sm-10">
-          <label for="perIn">Senses: </label>
-          <!-- known languages -->
 
-          <p><input placeholder="Senses" onchange="" id="lanIn" /></p>
+        <div class="col-sm-10">
+          <label for="sensesIn">Senses: </label>
+          <p><input placeholder="Senses" onchange="simpleTextUpdate(sensesIn,' ', 'senses')" id="sensesIn" /></p>
         </div>
       </div>
-
 
       <div class="row">
         <div class="col-sm-12">
           <!-- known languages -->
           <label for="perIn">Languages: </label>
-          <p><input placeholder="Languages" onchange="simpleTextUpdate(lanIn,lanOut,'languages')" id="lanIn" /></p>
+          <input placeholder="Languages" onchange="simpleTextUpdate(lanIn, lanOut, 'languages')" id="lanIn">
         </div>
       </div>
 
@@ -261,12 +259,12 @@
             <option value="3">Low</option>
           </select>
         </div>
-      </div>\
+      </div>
     </div>
 
+<!-- SKILLS TAB -->
     <div class="tab">Skills:
       <div class="container">
-
         <div class="row">
           <div class="col-sm-3">
             <label for="acro">Acrobatics: </label>
@@ -451,15 +449,14 @@
           </div>
         </div>
 
-        <div class="row loreEntry" style="">
+        <div class="row loreEntry" style="" id="loreRow">
           <div col-12>
             <label for="">Lore Skill: </label>
-
             <span class="loreEntry"style="white-space:nowrap;">
 
-              <input placeholder="New Lore Skill" onchange="" id="" />
+              <input placeholder="New Lore Skill" onchange="loreUpdate('loreId0')" id="loreId0" />
 
-              <select name="" style="margin-top: 22px; height:50px; width:10em;" class="custom-select" onchange="skillUpdate()" id="">
+              <select name="" class="custom-select select-height-adjust" onchange="skillUpdate()" id="loreSelect0">
                 <option selected>Select</option>
                 <option value="0">Extreme</option>
                 <option value="1">High</option>
@@ -479,13 +476,11 @@
     </div>
 
 
-
+<!-- TAB DEFENCE-->
     <div class="tab">
-
       <div class="row">
         <div class="col-sm-3">
           <label for="acId">AC: </label>
-          <!--ac-->
           <select name="ac" class="custom-select" onchange="acUpdate()" id="acId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
@@ -497,7 +492,6 @@
 
         <div class="col-sm-3">
           <label for="fortId">Fort: </label>
-          <!--fortitude-->
           <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOutId,fort)" id="fortId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
@@ -509,7 +503,6 @@
 
         <div class="col-sm-3">
           <label for="RefId">Ref: </label>
-          <!--reflex-->
           <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOutId,ref)" id="refId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
@@ -521,7 +514,6 @@
 
         <div class="col-sm-3">
           <label for="willId">Will: </label>
-          <!--will-->
           <select name="will" class="custom-select" onchange="saveUpdate(willId,willOutId,will)" id="willId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
@@ -535,7 +527,6 @@
       <div class="row">
       <div class="col-sm-3">
       <label for="hpId">HP: </label>
-      <!--hp-->
       <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -559,7 +550,6 @@
           <lable>Resistances: </label>
             <textarea type="text" class="no-outline"></textarea>
 
-            <!-- creature speed-->
             <lable>Speed: </label>
               <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
     </div>
@@ -574,10 +564,10 @@
       <!-- actions -->
       <!-- traits -->
       <!-- description -->
-
-
     </div>
 
+
+<!-- STRIKES -->
     <div class="tab">Strikes:
       <!-- name -->
       <input placeholder="name" onchange="" id="" />
@@ -591,9 +581,9 @@
         <option value="3">Low</option>
       </select>
       <!-- (traits)-->
+      <input placeholder="strike traits" onchange="" id="" />
       <!-- damage amount-->
       <label for="">Damage: </label>
-      <!--fortitude-->
       <select name="" class="custom-select" onchange="" id="">
         <option selected>Select</option>
         <option value="0">Extreme</option>
@@ -602,27 +592,25 @@
         <option value="3">Low</option>
       </select>
       <!-- damage type-->
+      <input placeholder="damage type" onchange="" id="" />
       <!-- additional effects-->
-
+      <input placeholder="additional effects" onchange="" id="" />
     </div>
 
     <div class="tab">Items:
-
     </div>
 
     <div class="tab">Spells:
-
     </div>
 
     <div style="overflow:auto;">
-      <div style="float:right;">
-        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <div>
+        <button type="button" class="blue-button" style="float:left;" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" class="blue-button" style="float:right;" id="nextBtn" onclick="nextPrev(1)">Next</button>
       </div>
     </div>
 
     <!-- Circles which indicates the steps of the form: -->
-
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-sm-12">

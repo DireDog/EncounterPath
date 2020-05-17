@@ -9,10 +9,12 @@ var creature = {
   theme: "",
 
   languages: "",
+  senses: "",
   rarity: "",
-  align:"",
+  align: "",
   size: "",
   speed: "",
+  genTraits: "",
 
   per: "",
   str: "",
@@ -38,6 +40,7 @@ var creature = {
   stea: "",
   surv: "",
   thie: "",
+  lore: "",
 
   fort: "",
   ref: "",
@@ -259,36 +262,34 @@ let strikeAttackBonus = [
 ];
 
 let strikeDamage = [
-  ['1d6+1','1d4+1','1d4','1d4'], //lv-1
-  ['1d6+3','1d6+2','1d4+2','1d4+1'], //lv0
-  ['1d8+4','1d6+3','1d6+2','1d4+2'], //lv1
-  ['1d12+4','1d10+4','1d8+4','1d6+3'], //lv2
-  ['1d12+8','1d10+6','1d8+6','1d6+5'], //lv3
-  ['2d10+7','2d8+5','2d6+5','2d4+4'], //lv4
-  ['2d12+7','2d8+7','2d6+6','2d4+6'], //lv5
-  ['2d12+10','2d8+9','2d6+8','2d4+7'], //lv6
-  ['2d12+12','2d10+9','2d8+8','2d6+6'], //lv7
-  ['2d12+15','2d10+11','2d8+9','2d6+8'], //lv8
-  ['2d12+17','2d10+13','2d8+11','2d6+9'], //lv9
-  ['2d12+20','2d12+13','2d10+11','2d6+10'], //10
-  ['2d12+22','2d12+15','2d10+12','2d8+10'], //11
-  ['3d12+19','3d10+14','3d8+12','3d6+10'], //12
-  ['3d12+21','3d10+16','3d8+14','3d6+11'], //13
-  ['3d12+24','3d10+18','3d8+15','3d6+13'], //14
-  ['3d12+26','3d12+17','3d10+14','3d6+14'], //15
-  ['3d12+29','3d12+18','3d10+15','3d6+15'], //16
-  ['3d12+31','3d12+19','3d10+16','3d6+16'], //17
-  ['3d12+34','3d12+20','3d10+17','3d6+17'], //18
-  ['4d12+29','4d10+20','4d8+17','4d6+14'], //19
-  ['4d12+32','4d10+22','4d8+19','4d6+15'], //20
-  ['4d12+34','4d10+24','4d8+20','4d6+17'], //21
-  ['4d12+37','4d10+26','4d8+22','4d6+18'], //22
-  ['4d12+39','4d12+24','4d10+20','4d6+19'], //23
-  ['4d12+42','4d12+26','4d10+22','4d6+21'], //24
+  ['1d6+1', '1d4+1', '1d4', '1d4'], //lv-1
+  ['1d6+3', '1d6+2', '1d4+2', '1d4+1'], //lv0
+  ['1d8+4', '1d6+3', '1d6+2', '1d4+2'], //lv1
+  ['1d12+4', '1d10+4', '1d8+4', '1d6+3'], //lv2
+  ['1d12+8', '1d10+6', '1d8+6', '1d6+5'], //lv3
+  ['2d10+7', '2d8+5', '2d6+5', '2d4+4'], //lv4
+  ['2d12+7', '2d8+7', '2d6+6', '2d4+6'], //lv5
+  ['2d12+10', '2d8+9', '2d6+8', '2d4+7'], //lv6
+  ['2d12+12', '2d10+9', '2d8+8', '2d6+6'], //lv7
+  ['2d12+15', '2d10+11', '2d8+9', '2d6+8'], //lv8
+  ['2d12+17', '2d10+13', '2d8+11', '2d6+9'], //lv9
+  ['2d12+20', '2d12+13', '2d10+11', '2d6+10'], //10
+  ['2d12+22', '2d12+15', '2d10+12', '2d8+10'], //11
+  ['3d12+19', '3d10+14', '3d8+12', '3d6+10'], //12
+  ['3d12+21', '3d10+16', '3d8+14', '3d6+11'], //13
+  ['3d12+24', '3d10+18', '3d8+15', '3d6+13'], //14
+  ['3d12+26', '3d12+17', '3d10+14', '3d6+14'], //15
+  ['3d12+29', '3d12+18', '3d10+15', '3d6+15'], //16
+  ['3d12+31', '3d12+19', '3d10+16', '3d6+16'], //17
+  ['3d12+34', '3d12+20', '3d10+17', '3d6+17'], //18
+  ['4d12+29', '4d10+20', '4d8+17', '4d6+14'], //19
+  ['4d12+32', '4d10+22', '4d8+19', '4d6+15'], //20
+  ['4d12+34', '4d10+24', '4d8+20', '4d6+17'], //21
+  ['4d12+37', '4d10+26', '4d8+22', '4d6+18'], //22
+  ['4d12+39', '4d12+24', '4d10+20', '4d6+19'], //23
+  ['4d12+42', '4d12+26', '4d10+22', '4d6+21'], //24
 ];
 
-
-//========================================================================//
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -308,7 +309,6 @@ function showTab(n) {
   fixStepIndicator(n);
 }
 
-//======================================================================//
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -328,14 +328,13 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
-//======================================================================//
 function validateForm() {
   // This function deals with validation of the form fields
   var tabEls, elTags, i, valid = true;
   tabEls = document.getElementsByClassName("tab");
-  elTags = tabEls[currentTab].getElementsByTagName("input");
-  /*
-  // A loop that checks every input field in the current tab:
+  elTags = tabEls[currentTab].getElementsByTagName("select");
+
+  //A loop that checks every input field in the current tab:
   for (i = 0; i < elTags.length; i++) {
     // If a field is empty...
     if (elTags[i].value == "") {
@@ -345,7 +344,7 @@ function validateForm() {
       valid = false;
     }
   }
-*/
+
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -354,7 +353,6 @@ function validateForm() {
 }
 
 function fixStepIndicator(n) {
-  console.log('n:'+n);
   // This function removes the "active" class of all steps...
   var i, stepEls = document.getElementsByClassName("step");
   for (i = 0; i < stepEls.length; i++) {
@@ -364,18 +362,16 @@ function fixStepIndicator(n) {
   stepEls[n].className += " active";
 
   //remove finish from step if you go back
-  if(stepEls[n].className == "step finish active"){
+  if (stepEls[n].className == "step finish active") {
     stepEls[n].className = stepEls[n].className.replace(" finish", "");
   }
 }
 
-//=======================================================================
 function simpleTextUpdate(textIn, textOut, attr) {
   creature[attr] = textIn.value;
-  textOut.value = creature[attr];
+  //textOut.value = creature[attr];
 }
 
-//=======================================================================
 function crUpdate() {
   var crElement = document.getElementById('crIn');
   var crName = crElement.options[crElement.selectedIndex].getAttribute('name');
@@ -384,38 +380,34 @@ function crUpdate() {
   creature.crIndex = document.getElementById('crIn').value;
 }
 
-//=======================================================================
 
-function blUpdate(newBl){
+function blUpdate(newBl) {
   var element = document.getElementById(newBl);
-    var name = element.options[element.selectedIndex].getAttribute('name');
-    creature.baseline = name;
+  var name = element.options[element.selectedIndex].getAttribute('name');
+  creature.baseline = name;
 }
 
-//=======================================================================
 
-function themeUpdate(newTheme){
+function themeUpdate(newTheme) {
   var element = document.getElementById(newTheme);
-    var name = element.options[element.selectedIndex].getAttribute('name');
-    creature.theme = name;
+  var name = element.options[element.selectedIndex].getAttribute('name');
+  creature.theme = name;
 }
-//=======================================================================
+
 function perUpdate() {
   var mod = document.getElementById('perIn').value;
   creature.per = perceptionScales[creature.crIndex][mod];
   document.getElementById('perOut').value = creature.per;
 }
 
-//=======================================================================
-/************** add ability Modifiers****************/
+
 function abilityModUpdate(modIn, modOut, stat) {
   var mod = modIn.value;
   creature[stat] = abilityModifierScales[creature.crIndex][mod];
   modOut.value = creature[stat];
 }
 
-//=======================================================================
-/************** add traits to out put form *******************/
+
 function traitsUpdate(newTrait, newTraitId, parent) {
   /*get the element the user inputed information into */
   var element = document.getElementById(newTrait);
@@ -456,53 +448,52 @@ function traitsUpdate(newTrait, newTraitId, parent) {
   } else {
     console.log("error in traitUpdate()");
   }
-
 }
 
-//=======================================================================
-/*************************************************************************/
-/*************************************************************************/
-function redTraitUpdate(newTrait, parent) {
+function genTraitUpdate(newTrait, parent) {
   var element = document.getElementById(newTrait);
   var text = element.value;
-  var textLen = text.length;
+  var textLen = "";
+  var numTraits = "";
+
+  creature.genTraits = text.split(",");
+  numTraits = creature.genTraits.length;
+
+  console.log(numTraits);
 
   /* type set is not monospace so trim some white space from ends of long strings */
+  /*
   if (textLen >= 10) {
     for (i = textLen; i >= 10; i = i - 10) {
       textLen = textLen - 2;
     }
     /*so that out will look something like '12em' ect*/
-  } else if (textLen <= 2) {
-    textLen = textLen + 1;
-  }
+  /*
+    } else if (textLen <= 2) {
+      textLen = textLen + 1;
+    }
 
-  textLen = textLen + 'em';
+    textLen = textLen + 'em';
+    */
+  /*
+    var input = document.createElement("INPUT");
+    input.setAttribute('type', 'text');
+    input.setAttribute('value', text);
+    input.setAttribute('class', 'redTrait');
+    input.style.width = textLen;
+    /*where the new element will go*/
+  /*
+   inputElement = document.getElementById(parent);
+   inputElement.appendChild(input);
 
-  var input = document.createElement("INPUT");
-  input.setAttribute('type', 'text');
-  input.setAttribute('value', text);
-  input.setAttribute('class', 'redTrait');
-  input.style.width = textLen;
-  /*where the new element will go*/
-  inputElement = document.getElementById(parent);
-  inputElement.appendChild(input);
-
-  element.value = "";
+   element.value = "";
+   */
 }
-
-//=======================================================================
-/**********************************************************************/
-/**********************************************************************/
 
 function redTraitRemove() {
   var element = document.getElementById('redT');
   element.removeChild(element.lastChild);
 }
-
-//=======================================================================
-/**********************************************************************/
-/**********************************************************************/
 
 function skillUpdate(skillEl, skillName) {
   var skillSelect = document.getElementById(skillEl).value;
@@ -510,38 +501,38 @@ function skillUpdate(skillEl, skillName) {
   var skillStr;
 
   if (skillName == 'acro') {
-    creature.acro = 'Acrobatics +'+skillVal+', ';
-  } else  if (skillName == 'arca'){
-    creature.arca = 'Arcana +'+skillVal+', ';
-  }else  if (skillName == 'athl'){
-    creature.athl = 'Athletics +'+skillVal+', ';
-  }else  if (skillName == 'craf'){
-    creature.craf = 'Crafting +'+skillVal+', ';
-  }else  if (skillName == 'dece'){
-    creature.dece = 'Deception +'+skillVal+', ';
-  }else  if (skillName == 'dipl'){
-    creature.dipl = 'Diplomacy +'+skillVal+', ';
-  }else  if (skillName == 'inti'){
-    creature.inti = 'Intimidation +'+skillVal+', ';
-  }else  if (skillName == 'medi'){
-    creature.medi = 'Medicine +'+skillVal+', ';
-  }else  if (skillName == 'natu'){
-    creature.natu = 'Nature +'+skillVal+', ';
-  }else  if (skillName == 'occu'){
-    creature.occu = 'Occultism +'+skillVal+', ';
-  }else  if (skillName == 'perf'){
-    creature.perf = 'Performance +'+skillVal+', ';
-  }else  if (skillName == 'reli'){
-    creature.reli = 'Religion +'+skillVal+', ';
-  }else  if (skillName == 'soci'){
-    creature.soci = 'Society +'+skillVal+', ';
-  }else  if (skillName == 'stea'){
-    creature.stea = 'Stealth +'+skillVal+', ';
-  }else  if (skillName == 'surv'){
-    creature.surv= 'Survival +'+skillVal+', ';
-  }else  if (skillName == 'thie'){
-    creature.thie = 'Thievery +'+skillVal+', ';
-  }else{
+    creature.acro = 'Acrobatics +' + skillVal + ', ';
+  } else if (skillName == 'arca') {
+    creature.arca = 'Arcana +' + skillVal + ', ';
+  } else if (skillName == 'athl') {
+    creature.athl = 'Athletics +' + skillVal + ', ';
+  } else if (skillName == 'craf') {
+    creature.craf = 'Crafting +' + skillVal + ', ';
+  } else if (skillName == 'dece') {
+    creature.dece = 'Deception +' + skillVal + ', ';
+  } else if (skillName == 'dipl') {
+    creature.dipl = 'Diplomacy +' + skillVal + ', ';
+  } else if (skillName == 'inti') {
+    creature.inti = 'Intimidation +' + skillVal + ', ';
+  } else if (skillName == 'medi') {
+    creature.medi = 'Medicine +' + skillVal + ', ';
+  } else if (skillName == 'natu') {
+    creature.natu = 'Nature +' + skillVal + ', ';
+  } else if (skillName == 'occu') {
+    creature.occu = 'Occultism +' + skillVal + ', ';
+  } else if (skillName == 'perf') {
+    creature.perf = 'Performance +' + skillVal + ', ';
+  } else if (skillName == 'reli') {
+    creature.reli = 'Religion +' + skillVal + ', ';
+  } else if (skillName == 'soci') {
+    creature.soci = 'Society +' + skillVal + ', ';
+  } else if (skillName == 'stea') {
+    creature.stea = 'Stealth +' + skillVal + ', ';
+  } else if (skillName == 'surv') {
+    creature.surv = 'Survival +' + skillVal + ', ';
+  } else if (skillName == 'thie') {
+    creature.thie = 'Thievery +' + skillVal + ', ';
+  } else {
     console.log('skill statment error');
   }
 
@@ -550,61 +541,82 @@ function skillUpdate(skillEl, skillName) {
   document.getElementById('skillOut').value = skillStr;
 }
 
-//=====================================================================//
+function loreUpdate(loreIn) {
+  var index = loreIn[loreIn.length - 1]; //the element ID number
+  var loreElement = document.getElementById(loreIn);
+  var loreElementVal = loreElement.value; //user text in box
+
+  if (loreElementVal != "") {
+    index++; //new elemnt will be one greater than old element
+    index = 'loreId' + index;
+    var newLoreElement = document.getElementById(index); // the new element to be created if not already exist
+    if (!newLoreElement) { //if donst exist
+      newLoreElement = document.createElement("INPUT");
+      newLoreElement.setAttribute('type', 'text');
+      newLoreElement.setAttribute('placeholder', 'New Lore Skill');
+      newLoreElement.setAttribute('id', index);
+      newLoreElement.setAttribute('onchange', 'loreUpdate(' + '"' + index + '"' + ') ');
+      inputElement = document.getElementById('loreRow');
+      inputElement.appendChild(newLoreElement);
+    }
+  }
+  loreEntryUpdate(index);
+}
+
+function loreEntryUpdate(numEntries) {}
+
 function acUpdate() {
   var mod = document.getElementById('acId').value;
   creature.ac = acScales[creature.crIndex][mod];
   document.getElementById('acOutId').value = creature.ac;
 }
 
-//=====================================================================//
-function saveUpdate(saveIn,saveOut,saveName) {
+function saveUpdate(saveIn, saveOut, saveName) {
   var mod = saveIn.value;
   creature[saveName] = savingThrowScales[creature.crIndex][mod];
   saveOut.value = creature[saveName];
 }
 
-//=====================================================================//
 function hpUpdate() {
   var mod = document.getElementById('hpId').value;
   creature.hp = hpScales[creature.crIndex][mod];
   document.getElementById('hpOutId').value = creature.hp;
 }
 
-//=====================================================================//
-
 function debug() {
-  console.log('name: '+ creature.name);
-  console.log('baseline: '+creature.baseline);
-  console.log('theme: '+creature.theme);
-  console.log('languages: '+creature.languages);
-  console.log('rarity: '+creature.rarity);
-  console.log('align: '+creature.align);
-  console.log('size: '+creature.size);
-  console.log('speed: '+creature.speed);
-  console.log('cr: '+creature.cr);
-  console.log('crIndex: '+creature.crIndex);
-  console.log('per: '+creature.per);
-  console.log('str: '+creature.str);
-  console.log('dex: '+creature.dex);
-  console.log('con: '+creature.con);
-  console.log('int: '+creature.int);
-  console.log('wis: '+creature.wis);
-  console.log('cha: '+creature.cha);
-  console.log('acro: '+creature.acro);
-  console.log('arca: '+creature.arca);
-  console.log('athl: '+creature.athl);
-  console.log('craf: '+creature.craf);
-  console.log('dece: '+creature.dece);
-  console.log('dipl: '+creature.dipl);
-  console.log('inti: '+creature.inti);
-  console.log('medi: '+creature.medi);
-  console.log('natu: '+creature.natu);
-  console.log('occu: '+creature.occu);
-  console.log('perf: '+creature.perf);
-  console.log('reli: '+creature.reli);
-  console.log('soci: '+creature.soci);
-  console.log('stea: '+creature.stea);
-  console.log('surv: '+creature.surv);
-  console.log('thie: '+creature.thie);
+  console.log('name: ' + creature.name);
+  console.log('baseline: ' + creature.baseline);
+  console.log('theme: ' + creature.theme);
+  console.log('languages: ' + creature.languages);
+  console.log('senses: ' + creature.senses);
+  console.log('rarity: ' + creature.rarity);
+  console.log('align: ' + creature.align);
+  console.log('size: ' + creature.size);
+  console.log('traits: ' + creature.genTraits);
+  console.log('speed: ' + creature.speed);
+  console.log('cr: ' + creature.cr);
+  console.log('crIndex: ' + creature.crIndex);
+  console.log('per: ' + creature.per);
+  console.log('str: ' + creature.str);
+  console.log('dex: ' + creature.dex);
+  console.log('con: ' + creature.con);
+  console.log('int: ' + creature.int);
+  console.log('wis: ' + creature.wis);
+  console.log('cha: ' + creature.cha);
+  console.log('acro: ' + creature.acro);
+  console.log('arca: ' + creature.arca);
+  console.log('athl: ' + creature.athl);
+  console.log('craf: ' + creature.craf);
+  console.log('dece: ' + creature.dece);
+  console.log('dipl: ' + creature.dipl);
+  console.log('inti: ' + creature.inti);
+  console.log('medi: ' + creature.medi);
+  console.log('natu: ' + creature.natu);
+  console.log('occu: ' + creature.occu);
+  console.log('perf: ' + creature.perf);
+  console.log('reli: ' + creature.reli);
+  console.log('soci: ' + creature.soci);
+  console.log('stea: ' + creature.stea);
+  console.log('surv: ' + creature.surv);
+  console.log('thie: ' + creature.thie);
 }
