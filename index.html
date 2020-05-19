@@ -63,20 +63,19 @@
 
     <div class="tab">baseline templates(Optional)
       <!--baseline template for creature-->
-      <lable>baseline templates(Optional) </label>
-        <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
-          <option selected>Select Baseline</option>
-          <option value="0" name="Brute">Brute</option>
-          <option value="1" name="Magical Striker">Magical Striker</option>
-          <option value="2" name="Skill Paragon">Skill Paragon</option>
-          <option value="3" name="Skirmisher">Skirmisher</option>
-          <option value="4" name="Sniper">Sniper</option>
-          <option value="5" name="Soldier">Soldier</option>
-          <option value="6" name="Spellcaster">Spellcaster</option>
-        </select>
+      <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
+        <option selected>Select Baseline</option>
+        <option value="0" name="Brute">Brute</option>
+        <option value="1" name="Magical Striker">Magical Striker</option>
+        <option value="2" name="Skill Paragon">Skill Paragon</option>
+        <option value="3" name="Skirmisher">Skirmisher</option>
+        <option value="4" name="Sniper">Sniper</option>
+        <option value="5" name="Soldier">Soldier</option>
+        <option value="6" name="Spellcaster">Spellcaster</option>
+      </select>
     </div>
 
-    <div class="tab">Themes:
+    <div class="tab">Themes: ....coming eventually (work in progress)
       <!--theme for creature-->
       <select name="Theme Trait" class="custom-select" onchange="themeUpdate('themeIn')" id="themeIn">
         <option selected>Select Theme (Optional)</option>
@@ -155,7 +154,7 @@
       <div><br></div>
     </div>
 
-<!-- MODIFIERS -->
+    <!-- MODIFIERS -->
     <div class="tab">Perception and Ability Modifiers:<br><br>
       <div class="row">
 
@@ -262,7 +261,7 @@
       </div>
     </div>
 
-<!-- SKILLS TAB -->
+    <!-- SKILLS TAB -->
     <div class="tab">Skills:
       <div class="container">
         <div class="row">
@@ -449,26 +448,28 @@
           </div>
         </div>
 
-        <div class="row loreEntry" style="" id="loreRow">
-          <div col-12>
-            <label for="">Lore Skill: </label>
-            <span class="loreEntry"style="white-space:nowrap;">
+        <div class="loreContainer" id="loreContainer">
+          <div class="row loreEntry0" id="loreRowId0">
+            <div class='col-12' id="loreColId0">
+              <label type="text" id="loreLabel0">Lore Skill: </label>
+              <span class="loreSpan0" style="">
 
-              <input placeholder="New Lore Skill" onchange="loreUpdate('loreId0')" id="loreId0" />
+                <input placeholder="New Lore Skill" style="width: 40%" onchange="loreUpdate('loreId0','loreSelect0')" id="loreId0" />
 
-              <select name="" class="custom-select select-height-adjust" onchange="skillUpdate()" id="loreSelect0">
-                <option selected>Select</option>
-                <option value="0">Extreme</option>
-                <option value="1">High</option>
-                <option value="2">Moderate</option>
-                <option value="3">Low</option>
+                <select class="custom-select select-height-adjust" onchange="" id="loreSelect0">
+                  <option selected>Select</option>
+                  <option value="0">Extreme</option>
+                  <option value="1">High</option>
+                  <option value="2">Moderate</option>
+                  <option value="3">Low</option>
 
-              </select>
+                </select>
 
-            </span>
+              </span>
+
+            </div>
 
           </div>
-
         </div>
 
       </div>
@@ -476,7 +477,7 @@
     </div>
 
 
-<!-- TAB DEFENCE-->
+    <!-- TAB DEFENCE-->
     <div class="tab">
       <div class="row">
         <div class="col-sm-3">
@@ -525,21 +526,21 @@
       </div>
 
       <div class="row">
-      <div class="col-sm-3">
-      <label for="hpId">HP: </label>
-      <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
-        <option selected>Select</option>
-        <option value="0">Extreme</option>
-        <option value="1">High</option>
-        <option value="2">Moderate</option>
-        <option value="3">Low</option>
-      </select>
-    </div>
-      <div class="col-sm-9">
-        <label for="hpId">Regenerration and Healing Abilites: </label>
-        <textarea type="text" class="no-outline"></textarea>
+        <div class="col-sm-3">
+          <label for="hpId">HP: </label>
+          <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
+            <option selected>Select</option>
+            <option value="0">Extreme</option>
+            <option value="1">High</option>
+            <option value="2">Moderate</option>
+            <option value="3">Low</option>
+          </select>
+        </div>
+        <div class="col-sm-9">
+          <label for="hpId">Regenerration and Healing Abilites: </label>
+          <textarea type="text" class="no-outline"></textarea>
+        </div>
       </div>
-    </div>
 
       <lable>Immunities: </label>
         <textarea type="text" class="no-outline"></textarea>
@@ -567,7 +568,7 @@
     </div>
 
 
-<!-- STRIKES -->
+    <!-- STRIKES -->
     <div class="tab">Strikes:
       <!-- name -->
       <input placeholder="name" onchange="" id="" />
