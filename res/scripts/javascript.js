@@ -593,6 +593,7 @@ function loreUpdate(loreNameIn, loreSelectIn) {
       var skillArrayValue = ["","0", "1", "2", "3"];
       //Create and append select list
       newLoreElement = document.createElement("select");
+      newLoreElement.setAttribute('onchange', 'loreUpdate(' + '"' + newLoreId + '"' + ') ');
       newLoreElement.setAttribute('id', 'loreSelect' + index);
       newLoreElement.setAttribute('class', 'custom-select select-height-adjust');
       inputElement = document.getElementById('loreSpanId' + index);
@@ -626,69 +627,76 @@ function loreEntryUpdate() {
   var maxIndex = 0, index = 0, text = "", value="", modifier="";
   while (document.getElementById('loreRowId' + maxIndex)){
     maxIndex++;
-    console.log(maxIndex);
   }
   maxIndex--;//while will one time to meny
   console.log(maxIndex);
-
-  for (index = 0; index < (maxIndex-1); index++) {
-    console.log(index);
-    text = document.getElementById('loreLabelId' + index).value;
+  creature.lore = '';
+  for (index = 0; index < (maxIndex); index++) {
+    text = document.getElementById('loreId' + index).value;
     value = document.getElementById('loreSelect' + index).value;
     modifier = abilityModifierScales[creature.crIndex][value];
 
-
-    creature.lore = creature.lore + text + ' ' + '+' + modifier + ' ';
-    console.log(creature.lore);
+      if((text != null && text != undefined) && (value != null && value != undefined) && (modifier != null && modifier != undefined)){
+        if (index == 0){
+          creature.lore = creature.lore + text + ' ' + '(+' + modifier + ')';
+          console.log(creature.lore);
+        }
+        else{
+          creature.lore = creature.lore + '; ' + text + ' ' + '(+' + modifier + ')';
+          console.log(creature.lore);
+      }
+    }
   }
-
-
 }
 
 function loreDeleteRow(index){
-  //console.log(index);
+  console.log('start: ' + index);
   var removeEl = document.getElementById('loreRowId' + index);
   //console.log('loreRowId' + index);
   var parent = document.getElementById('loreContainer');
   //console.log(parent);
   removeEl.remove();
   console.log('removed index: '+index);
-  //fix ID number
-  index = index+1;//as index should now be removed
-  console.log('index: '+index);
   //get maximum id number
-  var maxIndex = index;
+  var maxIndex = index +1;
   while (document.getElementById('loreRowId' + maxIndex)){
     maxIndex++;
   }
-  maxIndex = maxIndex - 1;//while loop runs one time to meny
  //update IDs of all elements and function calls
+ console.log('Max: '+maxIndex);
+ console.log('current index: '+index);
  for (index; index < (maxIndex-1); index++) {
-   console.log('top loop index: '+index);
+   nextIndex = index + 1;
+   console.log('at top of loop index: '+index);
    //row
-   adjustElement = document.getElementById('loreRowId' + index);
-   adjustElement.setAttribute('id', 'loreRowId' + (index - 1));
+   adjustElement = document.getElementById('loreRowId' + nextIndex);
+   console.log('get '+ ('loreRowId'+ nextIndex));
+   console.log('Before: '+ adjustElement);
+   adjustElement.setAttribute('class', 'row loreEntry' + index);
+   adjustElement.setAttribute('id', 'loreRowId' + (index));
+   console.log('After: '+ adjustElement);
    //col
-   adjustElement = document.getElementById('loreColId' + index);
-   adjustElement.setAttribute('id', 'loreColId' + (index - 1));
+   adjustElement = document.getElementById('loreColId' + nextIndex);
+   adjustElement.setAttribute('id', 'loreColId' + (index));
    //label
-   adjustElement = document.getElementById('loreLabelId' + index);
-   adjustElement.setAttribute('id', 'loreLabelId' + (index - 1));
+   adjustElement = document.getElementById('loreLabelId' + nextIndex);
+   adjustElement.setAttribute('id', 'loreLabelId' + (index));
    //span
-   adjustElement = document.getElementById('loreSpanId' + index);
-   adjustElement.setAttribute('id', 'loreSpanId' + (index - 1));
+   adjustElement = document.getElementById('loreSpanId' + nextIndex);
+   adjustElement.setAttribute('id', 'loreSpanId' + (index));
    //input
-   adjustElement = document.getElementById('loreId' + index);
-   adjustElement.setAttribute('id', 'loreId' + (index - 1));
-   adjustElement.setAttribute('onchange', 'loreUpdate(' + '"' + 'loreId' + index - 1 + '"' + ') ');
+   adjustElement = document.getElementById('loreId' + nextIndex);
+   adjustElement.setAttribute('id', 'loreId' + (index));
+   adjustElement.setAttribute('onchange', 'loreUpdate(' + '"' + 'loreId' + index + '"' + ') ');
    //select
-   adjustElement = document.getElementById('loreSelect' + index);
-   adjustElement.setAttribute('id', 'loreSelect' + (index - 1));
+   adjustElement = document.getElementById('loreSelect' + nextIndex);
+   adjustElement.setAttribute('id', 'loreSelect' + (index));
    //remove
-   adjustElement = document.getElementById('loreDelId' + index);
-   adjustElement.setAttribute('id', 'loreDelId' + index - 1);
-   adjustElement.setAttribute('onclick', 'loreDeleteRow('+(index-1)+')');
+   adjustElement = document.getElementById('loreDelId' + nextIndex);
+   adjustElement.setAttribute('id', 'loreDelId' + index);
+   adjustElement.setAttribute('onclick', 'loreDeleteRow('+(index)+')');
  }
+ loreEntryUpdate()
 }
 
 function acUpdate() {
