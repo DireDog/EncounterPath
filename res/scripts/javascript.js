@@ -54,8 +54,6 @@ var creature = {
 
   strikeAtk: "",
   strikeDam: ""
-
-
 };
 
 let abilityModifierScales = [
@@ -696,7 +694,7 @@ function loreDeleteRow(index){
    adjustElement.setAttribute('id', 'loreDelId' + index);
    adjustElement.setAttribute('onclick', 'loreDeleteRow('+(index)+')');
  }
- loreEntryUpdate()
+ loreEntryUpdate();
 }
 
 function acUpdate() {
@@ -754,4 +752,7 @@ function debug() {
   console.log('surv: ' + creature.surv);
   console.log('thie: ' + creature.thie);
   console.log('lore: ' + creature.lore);
+  console.log('immunites: ' + creature.immunities);
+  console.log('resistances: ' + creature.resistances);
+  console.log('weaknesses: ' + creature.weaknesses);
 }
