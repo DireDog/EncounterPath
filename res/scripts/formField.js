@@ -1,5 +1,4 @@
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+
 
 var creature = {
   name: "",
@@ -288,82 +287,34 @@ let strikeDamage = [
   ['4d12+42', '4d12+26', '4d10+22', '4d6+21'], //24
 ];
 
-function showTab(n) {
-  // This function will display the specified tab of the form ...
-  var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  // ... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n);
-}
-
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form... :
-  if (currentTab >= x.length) {
-    //...the form gets submitted:
-    document.getElementById("buildForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-function validateForm() {
-  // This function deals with validation of the form fields
-  var tabEls, elTags, i, valid = true;
-  tabEls = document.getElementsByClassName("tab");
-  elTags = tabEls[currentTab].getElementsByTagName("select");
-
-  //A loop that checks every input field in the current tab:
-  for (i = 0; i < elTags.length; i++) {
-    // If a field is empty...
-    if (elTags[i].value == "") {
-      // add an "invalid" class to the field:
-      elTags[i].className += " invalid";
-      // and set the current valid status to false:
-      valid = false;
-    }
-  }
-
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
-}
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, stepEls = document.getElementsByClassName("step");
-  for (i = 0; i < stepEls.length; i++) {
-    stepEls[i].className = stepEls[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class to the current step:
-  stepEls[n].className += " active";
-
-  //remove finish from step if you go back
-  if (stepEls[n].className == "step finish active") {
-    stepEls[n].className = stepEls[n].className.replace(" finish", "");
-  }
-}
+let resisWeakness = [
+  [1, 1], //lv-1
+  [3, 1], //lv0
+  [3, 2], //lv1
+  [5, 2], //lv2
+  [6, 3], //lv3
+  [7, 4], //lv4
+  [8, 4], //lv5
+  [9, 5], //lv6
+  [10, 5], //lv7
+  [11, 6], //lv8
+  [12, 6], //lv9
+  [13, 7], //10
+  [14, 7], //11
+  [15, 8], //12
+  [16, 8], //13
+  [17, 9], //14
+  [18, 9], //15
+  [19, 9], //16
+  [19, 10], //17
+  [20, 10], //18
+  [21, 11], //19
+  [22, 11], //20
+  [23, 12], //21
+  [24, 12], //22
+  [25, 13], //23
+  [26, 13], //24
+];
 
 function simpleTextUpdate(textIn, textOut, attr) {
   creature[attr] = textIn.value;
@@ -412,7 +363,6 @@ function traitsUpdate(newTrait, newTraitId, parent) {
   var name = element.options[element.selectedIndex].getAttribute('name');
   var nameLen = name.length;
   creature[newTraitId] = name;
-
   /* type set is not monospace so trim some white space from ends of long strings */
   if (nameLen >= 10) {
     for (i = nameLen; i >= 10; i = i - 10) {
@@ -424,19 +374,15 @@ function traitsUpdate(newTrait, newTraitId, parent) {
     nameLen = nameLen + 1;
   }
   nameLen = nameLen + 'em';
-
   /*actually make the new element to be added and set its Attributes*/
   var input = document.createElement("INPUT");
   input.setAttribute('type', 'text');
   input.setAttribute('value', name);
   input.setAttribute('id', newTraitId);
   input.style.width = nameLen;
-
   /*where the new element will go*/
   inputElement = document.getElementById(parent);
-  /*inputElement.appendChild(input);*/
   inputElement.appendChild(input);
-
   /*test if element allready exists to handle later user edits*/
   var elInputExists = document.getElementById(newTraitId);
   if (typeof(elInputExists) != 'undefined' && elInputExists != null) {
@@ -453,10 +399,8 @@ function genTraitUpdate(newTrait, parent) {
   var text = element.value;
   var textLen = "";
   var numTraits = "";
-
   creature.genTraits = text.split(",");
   numTraits = creature.genTraits.length;
-
   console.log(numTraits);
 
   /* type set is not monospace so trim some white space from ends of long strings */
@@ -497,7 +441,6 @@ function skillUpdate(skillEl, skillName) {
   var skillSelect = document.getElementById(skillEl).value;
   var skillVal = skillsScales[creature.crIndex][skillSelect];
   var skillStr;
-
   if (skillName == 'acro') {
     creature.acro = 'Acrobatics +' + skillVal + ', ';
   } else if (skillName == 'arca') {
@@ -533,10 +476,27 @@ function skillUpdate(skillEl, skillName) {
   } else {
     console.log('skill statment error');
   }
-
   skillStr = creature.acro + creature.arca + creature.athl + creature.craf + creature.dece + creature.dipl + creature.inti + creature.medi + creature.natu + creature.occu + creature.perf + creature.reli + creature.soci + creature.stea + creature.surv + creature.thie;
-
   document.getElementById('skillOut').value = skillStr;
+}
+
+
+function validEntryCheck(id,select){
+  index = id[id.length - 1];
+  text = document.getElementById('loreId' + index).value;
+  value = document.getElementById('loreSelect' + index).value;
+  if ((text != null && text != undefined) && (value != null && value != undefined) && (value != 'Select' && value != '')){
+    if (id == 'loreId' + index) {
+      loreUpdate(id,select);
+      }
+      else if (id){
+
+      }else{
+      console.log('validEntryCheck error');
+    }
+  }else{
+
+  }
 }
 
 function loreUpdate(loreNameIn, loreSelectIn) {
@@ -579,7 +539,7 @@ function loreUpdate(loreNameIn, loreSelectIn) {
       newLoreElement = document.createElement("INPUT");
       newLoreElement.setAttribute('placeholder', 'New Lore Skill');
       newLoreElement.setAttribute('id', newLoreId);
-      newLoreElement.setAttribute('onchange', 'loreUpdate(' + '"' + newLoreId + '"' + ') ');
+      newLoreElement.setAttribute('onchange', 'validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
       newLoreElement.style.width = '40%';
       inputElement = document.getElementById('loreSpanId' + index);
       inputElement.appendChild(newLoreElement);
@@ -591,15 +551,18 @@ function loreUpdate(loreNameIn, loreSelectIn) {
       var skillArrayValue = ["","0", "1", "2", "3"];
       //Create and append select list
       newLoreElement = document.createElement("select");
-      newLoreElement.setAttribute('onchange', 'loreUpdate(' + '"' + newLoreId + '"' + ') ');
+      newLoreElement.setAttribute('onchange','validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
+
+      console.log('validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
+      //validEntryCheck('loreId0','loreSelect0')
+
       newLoreElement.setAttribute('id', 'loreSelect' + index);
-      newLoreElement.setAttribute('class', 'custom-select select-height-adjust');
+      newLoreElement.setAttribute('class', 'custom-select new-field-select');
       inputElement = document.getElementById('loreSpanId' + index);
       inputElement.appendChild(newLoreElement);
 
       //Create and append the options
       inputElement = document.getElementById('loreSelect' + index);
-
       for (var i = 0; i < skillArrayName.length; i++) {
         var option = document.createElement("option");
         option.value = skillArrayValue[i];
@@ -610,69 +573,59 @@ function loreUpdate(loreNameIn, loreSelectIn) {
       newLoreElement = document.createElement("button");
       //newLoreElement.setAttribute('class', 'glyphicon glyphicon-remove  loreDelBtn' + index);
       newLoreElement.innerHTML = 'remove';
+      newLoreElement.setAttribute('class', 'new-field-remove');
       newLoreElement.setAttribute('id', 'loreDelId' + index);
       newLoreElement.setAttribute('onclick', 'loreDeleteRow('+index+')');
       newLoreElement.setAttribute('type', 'button');
       inputElement = document.getElementById('loreSpanId' + index);
       inputElement.appendChild(newLoreElement);
-
     }
   }
   loreEntryUpdate();
 }
 
-function loreEntryUpdate() {
+function loreEntryUpdate() { //add all lore entries to creature
   var maxIndex = 0, index = 0, text = "", value="", modifier="";
   while (document.getElementById('loreRowId' + maxIndex)){
     maxIndex++;
   }
   maxIndex--;//while will one time to meny
-  console.log(maxIndex);
   creature.lore = '';
   for (index = 0; index < (maxIndex); index++) {
     text = document.getElementById('loreId' + index).value;
     value = document.getElementById('loreSelect' + index).value;
     modifier = abilityModifierScales[creature.crIndex][value];
-
       if((text != null && text != undefined) && (value != null && value != undefined) && (modifier != null && modifier != undefined)){
         if (index == 0){
           creature.lore = creature.lore + text + ' ' + '(+' + modifier + ')';
-          console.log(creature.lore);
+          //console.log(creature.lore);
         }
         else{
           creature.lore = creature.lore + '; ' + text + ' ' + '(+' + modifier + ')';
-          console.log(creature.lore);
+          //console.log(creature.lore);
       }
     }
   }
 }
 
 function loreDeleteRow(index){
-  console.log('start: ' + index);
   var removeEl = document.getElementById('loreRowId' + index);
   //console.log('loreRowId' + index);
   var parent = document.getElementById('loreContainer');
   //console.log(parent);
   removeEl.remove();
-  console.log('removed index: '+index);
   //get maximum id number
   var maxIndex = index +1;
   while (document.getElementById('loreRowId' + maxIndex)){
     maxIndex++;
   }
  //update IDs of all elements and function calls
- console.log('Max: '+maxIndex);
- console.log('current index: '+index);
  for (index; index < (maxIndex-1); index++) {
    nextIndex = index + 1;
-   console.log('at top of loop index: '+index);
    //row
    adjustElement = document.getElementById('loreRowId' + nextIndex);
-   console.log('get '+ ('loreRowId'+ nextIndex));
-   console.log('Before: '+ adjustElement);
    adjustElement.setAttribute('class', 'row loreEntry' + index);
    adjustElement.setAttribute('id', 'loreRowId' + (index));
-   console.log('After: '+ adjustElement);
    //col
    adjustElement = document.getElementById('loreColId' + nextIndex);
    adjustElement.setAttribute('id', 'loreColId' + (index));

@@ -7,21 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!--CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="res/css/style.css">
+  <link rel="stylesheet" href="res/css/msForm.css">
+  <link rel="stylesheet" href="res/css/inputForm.css">
+  <link rel="stylesheet" href="res/css/outputForm.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
   <!--JS -->
   <script src="https://kit.fontawesome.com/e507889de1.js" crossorigin="anonymous" SameSite="None"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script defer src="res/scripts/javascript.js"></script>
+  <script defer src="res/scripts/formField.js"></script>
+  <script defer src="res/scripts/msForm.js"></script>
   <title>Reina Lalibertebaron</title>
 </head>
 
 <body>
 
   <!-- MultiStep Form -->
-  <form id="buildForm" action="">
+  <form id="buildForm" action="" autocomplete="off" onkeydown="return event.key != 'Enter';">
     <h1>Monster Builder:</h1>
     <!-- One "tab" for each step in the form: -->
     <div class="tab">
@@ -449,29 +452,24 @@
         </div>
 
         <div class="loreContainer" id="loreContainer">
-          <div class="row loreEntry0" id="loreRowId0">
-            <div class='col-12' id="loreColId0">
+          <div class="row loreEntry0 gen-field-row" id="loreRowId0">
+            <div class='col-12 gen-field-col' id="loreColId0">
               <label type="text" id="loreLabel0">Lore Skill: </label>
               <span class="loreSpan0" style="">
 
-                <input placeholder="New Lore Skill" style="width: 40%" onchange="loreUpdate('loreId0','loreSelect0')" id="loreId0" />
+                <input class="new-field-gen" placeholder="New Lore Skill" autocomplete="off" style="width: 40%" onchange="validEntryCheck('loreId0','loreSelect0')" id="loreId0" />
 
-                <select class="custom-select select-height-adjust" onchange="" id="loreSelect0">
+                <select class="custom-select new-field-select" onchange="validEntryCheck('loreId0','loreSelect0')" id="loreSelect0">
                   <option selected>Select</option>
                   <option value="0">Extreme</option>
                   <option value="1">High</option>
                   <option value="2">Moderate</option>
                   <option value="3">Low</option>
-
                 </select>
-
               </span>
-
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
     </div>
@@ -542,17 +540,17 @@
         </div>
       </div>
 
-      <lable>Immunities: </label>
-        <textarea type="text" class="no-outline"></textarea>
+      <label>Immunities: </label>
+      <textarea type="text" class="no-outline" id="immunIn" onchange="simpleTextUpdate(immunIn,immunOut,'immunities')"></textarea>
 
-        <lable>Weaknesses: </label>
-          <textarea type="text" class="no-outline"></textarea>
+      <label>Weaknesses: </label>
+      <textarea type="text" class="no-outline"></textarea>
 
-          <lable>Resistances: </label>
-            <textarea type="text" class="no-outline"></textarea>
+      <label>Resistances: </label>
+      <textarea type="text" class="no-outline"></textarea>
 
-            <lable>Speed: </label>
-              <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
+      <label>Speed: </label>
+      <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
     </div>
 
     <div class="tab">Defensive Abilities and Free Actions:
@@ -566,8 +564,6 @@
       <!-- traits -->
       <!-- description -->
     </div>
-
-
     <!-- STRIKES -->
     <div class="tab">Strikes:
       <!-- name -->
@@ -664,9 +660,6 @@
       <div class="form-row">
 
       </div>
-
-
-
       <div class="form-row">
         <div class="col inline-label">
           <label for="skillOut">Skills </label>

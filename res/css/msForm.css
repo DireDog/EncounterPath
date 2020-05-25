@@ -1,0 +1,83 @@
+/* Style the form */
+.blue-button {
+  box-shadow: inset 0px 1px 0px 0px #97c4fe;
+  background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+  background-color: #3d94f6;
+  border-radius: 6px;
+  border: 1px solid #337fed;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #1570cd;
+}
+
+.blue-button:hover {
+  background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+  background-color: #1e62d0;
+}
+
+.blue-button:active {
+  position: relative;
+  top: 1px;
+}
+
+/* Mark input boxes that gets an error on validation: */
+select.invalid {
+  background-color: #ffdddd;
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+.no-outline {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: #eee;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+  border: 5px solid black;
+  border-radius: 25px;
+  padding: 10px
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 50px;
+  width: 50px;
+  line-height: 115px;
+  margin-right: 20px;
+  background-color: black;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* Mark the active step: */
+.step.active {
+  background-color: green;
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: green;
+  opacity: 1;
+}
+
+.step-container {}

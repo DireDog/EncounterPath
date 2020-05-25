@@ -1,3 +1,3 @@
 # EncounterPath
 
-goal is create an easy to use Pathfinder 2e monster creater with as much automation as posible
+The goal of this project is to create an easy to use Pathfinder 2e monster creator with as much automation as possible.
