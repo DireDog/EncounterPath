@@ -5,7 +5,6 @@
   margin: 100px auto;
   padding: 40px;
   white-space: normal;
-  width: 700px;
 }
 
 /* TOP SECTIONS */
@@ -24,30 +23,33 @@
   width: 33.4%;
 }
 
-#creatureRarity {
+#rarity {
   text-align: center;
   white-space: nowrap;
   color: white;
   background-color: orange;
   border: 1px solid black;
+  border-radius: 6px;
   font-family: 'Manrope', sans-serif;
 }
 
-#creatureAlign {
+#align {
   text-align: center;
   white-space: nowrap;
   color: white;
   background-color: blue;
   border: 1px solid black;
+  border-radius: 6px;
   font-family: 'Manrope', sans-serif;
 }
 
-#creatureSize {
+#size {
   text-align: center;
   white-space: nowrap;
   color: white;
   background-color: green;
   border: 1px solid black;
+  border-radius: 6px;
   font-family: 'Manrope', sans-serif;
 }
 
@@ -63,10 +65,13 @@
 /* Style the input fields */
 .inline-label {
   display: inline-block;
+  font-weight: bold;
+  font-family: 'Manrope', sans-serif;
 }
 
 .inline-label .input {
   display: inline;
+  font-weight: bold;
 }
 
 .custom-select {
@@ -84,6 +89,12 @@
   width: 100%;
 }
 
-#col-traits {
+.section-trait {
+  /*
   background-color: yellow;
+  display: inline-block; */
+}
+
+.underlineBlock {
+  border-bottom: 3px solid black;
 }

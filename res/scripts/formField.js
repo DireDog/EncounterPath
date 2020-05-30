@@ -316,9 +316,19 @@ let resisWeakness = [
   [26, 13], //24
 ];
 
+
+//to be replaced
 function simpleTextUpdate(textIn, textOut, attr) {
   creature[attr] = textIn.value;
   //textOut.value = creature[attr];
+}
+
+function nameUpdate(){
+    var nameElementIn = document.getElementById('nameIn');
+    var nameElementOut = document.getElementById('nameOut');
+    creature.name = nameElementIn.value;
+    nameElementOut.value = nameElementIn.value;
+
 }
 
 function crUpdate() {
@@ -342,20 +352,6 @@ function themeUpdate(newTheme) {
   var name = element.options[element.selectedIndex].getAttribute('name');
   creature.theme = name;
 }
-
-function perUpdate() {
-  var mod = document.getElementById('perIn').value;
-  creature.per = perceptionScales[creature.crIndex][mod];
-  document.getElementById('perOut').value = creature.per;
-}
-
-
-function abilityModUpdate(modIn, modOut, stat) {
-  var mod = modIn.value;
-  creature[stat] = abilityModifierScales[creature.crIndex][mod];
-  modOut.value = creature[stat];
-}
-
 
 function traitsUpdate(newTrait, newTraitId, parent) {
   /*get the element the user inputed information into */
@@ -403,6 +399,7 @@ function genTraitUpdate(newTrait, parent) {
   numTraits = creature.genTraits.length;
   console.log(numTraits);
 
+  
   /* type set is not monospace so trim some white space from ends of long strings */
   /*
   if (textLen >= 10) {
@@ -435,6 +432,18 @@ function genTraitUpdate(newTrait, parent) {
 function redTraitRemove() {
   var element = document.getElementById('redT');
   element.removeChild(element.lastChild);
+}
+
+function perUpdate() {
+  var mod = document.getElementById('perIn').value;
+  creature.per = perceptionScales[creature.crIndex][mod];
+  document.getElementById('perOut').value = creature.per;
+}
+
+function abilityModUpdate(modIn, modOut, stat) {
+  var mod = modIn.value;
+  creature[stat] = abilityModifierScales[creature.crIndex][mod];
+  modOut.value = creature[stat];
 }
 
 function skillUpdate(skillEl, skillName) {
@@ -662,7 +671,7 @@ function saveUpdate(saveIn, saveOut, saveName) {
   saveOut.value = creature[saveName];
 }
 
-function hpUpdate() {
+function hpBlockUpdate() {
   var mod = document.getElementById('hpId').value;
   creature.hp = hpScales[creature.crIndex][mod];
   document.getElementById('hpOutId').value = creature.hp;

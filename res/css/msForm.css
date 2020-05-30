@@ -80,4 +80,6 @@ select.invalid {
   opacity: 1;
 }
 
-.step-container {}
+.step-container {
+  text-align: center;
+}

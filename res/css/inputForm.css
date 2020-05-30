@@ -3,7 +3,6 @@
   margin: 100px auto;
   padding: 40px;
   width: 70%;
-  min-width: 700px;
 }
 
 textarea {
@@ -17,7 +16,7 @@ input {
   padding: 10px;
   width: 100%;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: 'Manrope', sans-serif;
   border: 1px solid #aaaaaa;
   vertical-align: middle;
 }

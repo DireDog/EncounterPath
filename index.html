@@ -30,7 +30,7 @@
     <div class="tab">
       <!--creature name-->
       <lable>Name: </label>
-        <p><input placeholder="Creature Name" onchange="simpleTextUpdate(nameIn,nameOut,'name')" id="nameIn"></p>
+        <p><input placeholder="Creature Name" onchange="nameUpdate()" id="nameIn"></p>
         <!--creature level-->
         <lable>CR: </label>
           <select name="crLevel" class="custom-select" onchange="crUpdate()" id="crIn" required>
@@ -526,7 +526,7 @@
       <div class="row">
         <div class="col-sm-3">
           <label for="hpId">HP: </label>
-          <select name="hp" class="custom-select" onchange="hpUpdate()" id="hpId">
+          <select name="hp" class="custom-select" onchange="hpBlockUpdate()" id="hpId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
             <option value="1">High</option>
@@ -544,10 +544,10 @@
       <textarea type="text" class="no-outline" id="immunIn" onchange="simpleTextUpdate(immunIn,immunOut,'immunities')"></textarea>
 
       <label>Weaknesses: </label>
-      <textarea type="text" class="no-outline"></textarea>
+      <textarea type="text" class="no-outline" id="weakIn" onchange="simpleTextUpdate(weakIn,weakOut,'weaknesses')"></textarea>
 
       <label>Resistances: </label>
-      <textarea type="text" class="no-outline"></textarea>
+      <textarea type="text" class="no-outline" id="resIn" onchange="simpleTextUpdate(resIn,resOut,'resistances')"></textarea>
 
       <label>Speed: </label>
       <p><input placeholder="Speed" onchange="simpleTextUpdate(speedIn,speedOut,'speed')" id="speedIn" /></p>
@@ -611,7 +611,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-sm-12">
-          <div class="step-container" style="text-align:center;">
+          <div class="step-container">
             <span class="step">Name</span>
             <span class="step">Baseline</span>
             <span class="step">Theme</span>
@@ -645,10 +645,10 @@
           </span>
         </div>
       </div>
-      <div style="border-bottom: 3px solid black"></div>
+      <div class="underlineBlock"></div>
       <!---->
       <div class="form-row">
-        <div class="col section-trait" id="col-traits">
+        <div class="col section-trait">
           <span id="rareT"></span>
           <span id="alignT"></span>
           <span id="sizeT"></span>
@@ -658,143 +658,107 @@
       <!---->
 
       <div class="form-row">
-
-      </div>
-      <div class="form-row">
-        <div class="col inline-label">
-          <label for="skillOut">Skills </label>
-          <textarea type="text" class="no-outline" id="skillOut" readonly></textarea>
+        <div class="col">
+          <input placeholder="per" type="text" class="no-outline" id="perOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-label">
-          <label for="perOut">Perception </label>
-          <input type="text" style="width:5em" class="no-outline" id="perOut" readonly>
-        </div>
-
-        <div class="form-row">
-          <div class="col inline-label">
-            <label for="lanOut">Languages </label>
-            <input type="text" class="no-outline" id="lanOut" readonly>
-          </div>
-        </div>
-
-        <div class="col inline-label">
-          <label for="strAbiModOut">Str </label>
-          <input type="text" class="no-outline" id="strAbiModOut" readonly>
-        </div>
-        <div class="col inline-label">
-          <label for="dexAbiModOut">Dex </label>
-          <input type="text" class="no-outline" id="dexAbiModOut" readonly>
-        </div>
-        <div class="col inline-label">
-          <label for="conAbiModOut">Con </label>
-          <input type="text" class="no-outline" id="conAbiModOut" readonly>
-        </div>
-        <div class="col inline-label">
-          <label for="intAbiModOut">Int </label>
-          <input type="text" class="no-outline" id="intAbiModOut" readonly>
-        </div>
-        <div class="col inline-label">
-          <label for="wisAbiModOut">Wis </label>
-          <input type="text" class="no-outline" id="wisAbiModOut" readonly>
-        </div>
-        <div class="col inline-label">
-          <label for="chaAbiModOut">Cha </label>
-          <input type="text" class="no-outline" id="chaAbiModOut" readonly>
+        <div class="col">
+          <input placeholder="languages" type="text" class="no-outline" id="lanOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="">Items </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <textarea placeholder="Skills" type="text" class="no-outline" id="skillOut" readonly></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-label">
+          <input placeholder="str" type="text" class="no-outline" id="strAbiModOut" readonly>
+        </div>
+        <div class="col inline-label">
+          <input placeholder="dex" type="text" class="no-outline" id="dexAbiModOut" readonly>
+        </div>
+        <div class="col inline-label">
+          <input placeholder="con" type="text" class="no-outline" id="conAbiModOut" readonly>
+        </div>
+        <div class="col inline-label">
+          <input placeholder="int" type="text" class="no-outline" id="intAbiModOut" readonly>
+        </div>
+        <div class="col inline-label">
+          <input placeholder="wis" type="text" class="no-outline" id="wisAbiModOut" readonly>
+        </div>
+        <div class="col inline-label">
+          <input placeholder="cha" type="text" class="no-outline" id="chaAbiModOut" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col inline-label">
+          <input placeholder="item" type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label ">
-          <label for="">Interaction Abilities </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <input placeholder="interaction abilities" type="text" class="no-outline" id="" readonly>
         </div>
       </div>
-      <div style="border-bottom: 3px solid black"></div>
+      <div class="underlineBlock"></div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <label for="acOutId">AC </label>
-          <input type="text" class="no-outline" id="acOutId" readonly>
+          <input placeholder="ac" type="text" class="no-outline" id="acOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="fortOutId">Fort </label>
-          <input type="text" class="no-outline" id="fortOutId" readonly>
+          <input placeholder="fort" type="text" class="no-outline" id="fortOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="refOutId">Ref </label>
-          <input type="text" class="no-outline" id="refOutId" readonly>
+          <input placeholder="ref" type="text" class="no-outline" id="refOut" readonly>
         </div>
         <div class="col inline-label">
-          <label for="willOutId">Will </label>
-          <input type="text" class="no-outline" id="willOutId" readonly>
+          <input placeholder="will" type="text" class="no-outline" id="willOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <!--<label for="hpOutId">HP </label>-->
-          <input type="text" placeholder="HP" class="no-outline" id="hpOutId" readonly>
-        </div>
-      </div>
-      <!---->
-      <!--
-          <label for="">Immunities </label>
-          <input type="text" placeholder="" class="no-outline" id="">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col inline-label">
-          <label for="">Weaknesses </label>
-          <input type="text" placeholder="" class="no-outline" id="">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col inline-label">
-          <label for="">Resistances </label>
-          <input type="text" placeholder="" class="no-outline" id="">
-
+          <input placeholder="hp" type="text" class="no-outline" id="hpBlockOut" readonly>
         </div>
       </div>
 
       <!---->
       <div class="form-row">
         <div class="col inline-label ">
-          <label for="">Automatic Abilities </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <input placeholder="automatic abilities"  type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label ">
-          <label for="">Reactive Abilities </label>
-          <input type="text" class="no-outline" id="" readonly>
+          <input placeholder="reaction abilities" type="text" class="no-outline" id="" readonly>
         </div>
       </div>
-      <div style="border-bottom: 3px solid black"></div>
+      <div class="underlineBlock"></div>
 
       <div class="form-row">
         <div class="col inline-label ">
-          <label for="speedOut">Speed </label>
-          <input type="text" class="no-outline" id="speedOut" readonly>
+          <input placeholder="speed" type="text" class="no-outline" id="speedOut" readonly>
         </div>
       </div>
 
+      <div class="form-row meleeDiv">
+      </div>
+
+      <div class="form-row spellDiv">
+      </div>
+
       <div class="form-row">
-        <div class="col inline-label ">
-          <label for="">Offensive or Proactive Abilities </label>
-          <input type="text" class="no-outline" id="" readonly>
+        <div class="col">
+          <input placeholder="offensive or proactive abilities" type="text" class="no-outline" id="" readonly>
         </div>
       </div>
 
