@@ -51,6 +51,7 @@ function validateForm() {
     if (elTags[i].value == "") {
       // add an "invalid" class to the field:
       elTags[i].className += " invalid";
+      console.log('argugdfgf');
       // and set the current valid status to false:
       valid = false;
     }

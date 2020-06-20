@@ -399,7 +399,7 @@ function genTraitUpdate(newTrait, parent) {
   numTraits = creature.genTraits.length;
   console.log(numTraits);
 
-  
+
   /* type set is not monospace so trim some white space from ends of long strings */
   /*
   if (textLen >= 10) {
@@ -494,17 +494,16 @@ function validEntryCheck(id,select){
   index = id[id.length - 1];
   text = document.getElementById('loreId' + index).value;
   value = document.getElementById('loreSelect' + index).value;
+
   if ((text != null && text != undefined) && (value != null && value != undefined) && (value != 'Select' && value != '')){
+
     if (id == 'loreId' + index) {
       loreUpdate(id,select);
-      }
-      else if (id){
-
       }else{
-      console.log('validEntryCheck error');
+      console.log('validEntryCheck error inner if');
     }
   }else{
-
+    console.log('one of two lore fields are unedited');
   }
 }
 
@@ -556,14 +555,13 @@ function loreUpdate(loreNameIn, loreSelectIn) {
       //select box
       newLoreElement = document.createElement("SELECT");
       //Create array of options to be added
-      var skillArrayName = ["Select","Extream", "High", "Moderate", "low"];
-      var skillArrayValue = ["","0", "1", "2", "3"];
-      //Create and append select list
-      newLoreElement = document.createElement("select");
+      var skillArrayName = ["Extream", "High", "Moderate", "low"];
+      var skillArrayValue = ["0", "1", "2", "3"];
+      //Create and append select list to select dropdown box
+      newLoreElement = document.createElement("SELECT");
       newLoreElement.setAttribute('onchange','validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
 
-      console.log('validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
-      //validEntryCheck('loreId0','loreSelect0')
+      //console.log('validEntryCheck(' + '"' + newLoreId + '", ' + '"loreSelect' + index + '") ');
 
       newLoreElement.setAttribute('id', 'loreSelect' + index);
       newLoreElement.setAttribute('class', 'custom-select new-field-select');
@@ -572,8 +570,12 @@ function loreUpdate(loreNameIn, loreSelectIn) {
 
       //Create and append the options
       inputElement = document.getElementById('loreSelect' + index);
+      var option = document.createElement("option");
+      option.text = 'Select';
+      option.selected = true;
+      inputElement.appendChild(option);
       for (var i = 0; i < skillArrayName.length; i++) {
-        var option = document.createElement("option");
+        option = document.createElement("option");
         option.value = skillArrayValue[i];
         option.text = skillArrayName[i];
         inputElement.appendChild(option);
