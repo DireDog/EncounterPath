@@ -64,8 +64,9 @@
           </select>
     </div>
 
+    <!--
     <div class="tab">baseline templates(Optional)
-      <!--baseline template for creature-->
+      <!--baseline template for creature--><!--
       <select name="baseline" class="custom-select" onchange="blUpdate('blIn')" id="blIn">
         <option selected>Select Baseline</option>
         <option value="0" name="Brute">Brute</option>
@@ -79,7 +80,7 @@
     </div>
 
     <div class="tab">Themes: ....coming eventually (work in progress)
-      <!--theme for creature-->
+      <!--theme for creature--><!--
       <select name="Theme Trait" class="custom-select" onchange="themeUpdate('themeIn')" id="themeIn">
         <option selected>Select Theme (Optional)</option>
         <option value="0" name="Aberration">Aberration</option>
@@ -92,9 +93,9 @@
         <option value="7" name="Azata">Azata</option>
       </select>
     </div>
+-->
 
     <div class="tab">
-
       <div class="container">
         <div class="row">
           <div class="col-sm-4">
@@ -175,7 +176,7 @@
 
         <div class="col-sm-10">
           <label for="sensesIn">Senses: </label>
-          <p><input placeholder="Senses" onchange="simpleTextUpdate(sensesIn,' ', 'senses')" id="sensesIn" /></p>
+          <p><input placeholder="Senses" onchange="perUpdate()" id="sensesIn" /></p>
         </div>
       </div>
 
@@ -183,7 +184,7 @@
         <div class="col-sm-12">
           <!-- known languages -->
           <label for="perIn">Languages: </label>
-          <input placeholder="Languages" onchange="simpleTextUpdate(lanIn, lanOut, 'languages')" id="lanIn">
+          <input placeholder="Languages" onchange="langUpdate()" id="langIn">
         </div>
       </div>
 
@@ -451,6 +452,7 @@
           </div>
         </div>
 
+        <!--
         <div class="loreContainer" id="loreContainer">
           <div class="row loreEntry0 gen-field-row" id="loreRowId0">
             <div class='col-12 gen-field-col' id="loreColId0">
@@ -470,6 +472,7 @@
             </div>
           </div>
         </div>
+      -->
       </div>
     </div>
     </div>
@@ -491,7 +494,7 @@
 
         <div class="col-sm-3">
           <label for="fortId">Fort: </label>
-          <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOutId,fort)" id="fortId">
+          <select name="fort" class="custom-select" onchange="saveUpdate(fortId,fortOut,fort)" id="fortId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
             <option value="1">High</option>
@@ -502,7 +505,7 @@
 
         <div class="col-sm-3">
           <label for="RefId">Ref: </label>
-          <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOutId,ref)" id="refId">
+          <select name="ref" class="custom-select" onchange="saveUpdate(refId,refOut,ref)" id="refId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
             <option value="1">High</option>
@@ -513,7 +516,7 @@
 
         <div class="col-sm-3">
           <label for="willId">Will: </label>
-          <select name="will" class="custom-select" onchange="saveUpdate(willId,willOutId,will)" id="willId">
+          <select name="will" class="custom-select" onchange="saveUpdate(willId,willOut,will)" id="willId">
             <option selected>Select</option>
             <option value="0">Extreme</option>
             <option value="1">High</option>
@@ -528,10 +531,9 @@
           <label for="hpId">HP: </label>
           <select name="hp" class="custom-select" onchange="hpBlockUpdate()" id="hpId">
             <option selected>Select</option>
-            <option value="0">Extreme</option>
-            <option value="1">High</option>
-            <option value="2">Moderate</option>
-            <option value="3">Low</option>
+            <option value="0">High</option>
+            <option value="1">Moderate</option>
+            <option value="2">Low</option>
           </select>
         </div>
         <div class="col-sm-9">
@@ -659,40 +661,40 @@
 
       <div class="form-row">
         <div class="col">
-          <input placeholder="per" type="text" class="no-outline" id="perOut" readonly>
+          <input placeholder="per:" type="text" class="no-outline" id="perOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col">
-          <input placeholder="languages" type="text" class="no-outline" id="lanOut" readonly>
+          <input placeholder="languages:" type="text" class="no-outline" id="langOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <textarea placeholder="Skills" type="text" class="no-outline" id="skillOut" readonly></textarea>
+          <textarea placeholder=" Skills:" type="text" class="no-outline" id="skillOut" readonly></textarea>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col inline-label">
-          <input placeholder="str" type="text" class="no-outline" id="strAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="str:" type="text" class="no-outline" id="strAbiModOut" readonly>
         </div>
-        <div class="col inline-label">
-          <input placeholder="dex" type="text" class="no-outline" id="dexAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="dex:" type="text" class="no-outline" id="dexAbiModOut" readonly>
         </div>
-        <div class="col inline-label">
-          <input placeholder="con" type="text" class="no-outline" id="conAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="con:" type="text" class="no-outline" id="conAbiModOut" readonly>
         </div>
-        <div class="col inline-label">
-          <input placeholder="int" type="text" class="no-outline" id="intAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="int:" type="text" class="no-outline" id="intAbiModOut" readonly>
         </div>
-        <div class="col inline-label">
-          <input placeholder="wis" type="text" class="no-outline" id="wisAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="wis:" type="text" class="no-outline" id="wisAbiModOut" readonly>
         </div>
-        <div class="col inline-label">
-          <input placeholder="cha" type="text" class="no-outline" id="chaAbiModOut" readonly>
+        <div class="col-sm-2 inline-label">
+          <input placeholder="cha:" type="text" class="no-outline" id="chaAbiModOut" readonly>
         </div>
       </div>
 
@@ -711,22 +713,22 @@
 
       <div class="form-row">
         <div class="col inline-label">
-          <input placeholder="ac" type="text" class="no-outline" id="acOut" readonly>
+          <input placeholder="ac:" type="text" class="no-outline" id="acOut" readonly>
         </div>
         <div class="col inline-label">
-          <input placeholder="fort" type="text" class="no-outline" id="fortOut" readonly>
+          <input placeholder="fort:" type="text" class="no-outline" id="fortOut" readonly>
         </div>
         <div class="col inline-label">
-          <input placeholder="ref" type="text" class="no-outline" id="refOut" readonly>
+          <input placeholder="ref:" type="text" class="no-outline" id="refOut" readonly>
         </div>
         <div class="col inline-label">
-          <input placeholder="will" type="text" class="no-outline" id="willOut" readonly>
+          <input placeholder="will:" type="text" class="no-outline" id="willOut" readonly>
         </div>
       </div>
 
       <div class="form-row">
         <div class="col inline-label">
-          <input placeholder="hp" type="text" class="no-outline" id="hpBlockOut" readonly>
+          <input placeholder="hp" type="text" class="no-outline" id="hpOut" readonly>
         </div>
       </div>
 

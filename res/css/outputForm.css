@@ -62,6 +62,10 @@
   font-family: 'Manrope', sans-serif;
 }
 
+#spacing{
+  padding-right: 0px;
+  padding-left: 0px;
+}
 /* Style the input fields */
 .inline-label {
   display: inline-block;

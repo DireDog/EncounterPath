@@ -323,6 +323,7 @@ function simpleTextUpdate(textIn, textOut, attr) {
   //textOut.value = creature[attr];
 }
 
+//Creature name
 function nameUpdate(){
     var nameElementIn = document.getElementById('nameIn');
     var nameElementOut = document.getElementById('nameOut');
@@ -331,6 +332,7 @@ function nameUpdate(){
 
 }
 
+// Creature CR
 function crUpdate() {
   var crElement = document.getElementById('crIn');
   var crName = crElement.options[crElement.selectedIndex].getAttribute('name');
@@ -339,20 +341,21 @@ function crUpdate() {
   creature.crIndex = document.getElementById('crIn').value;
 }
 
-
+//Creature Baseline
 function blUpdate(newBl) {
   var element = document.getElementById(newBl);
   var name = element.options[element.selectedIndex].getAttribute('name');
   creature.baseline = name;
 }
 
-
+//TODO Creature Theme
 function themeUpdate(newTheme) {
   var element = document.getElementById(newTheme);
   var name = element.options[element.selectedIndex].getAttribute('name');
   creature.theme = name;
 }
 
+//Creature traits
 function traitsUpdate(newTrait, newTraitId, parent) {
   /*get the element the user inputed information into */
   var element = document.getElementById(newTrait);
@@ -437,13 +440,22 @@ function redTraitRemove() {
 function perUpdate() {
   var mod = document.getElementById('perIn').value;
   creature.per = perceptionScales[creature.crIndex][mod];
-  document.getElementById('perOut').value = creature.per;
+  var mod = document.getElementById('sensesIn').value;
+  creature.senses = mod
+  document.getElementById('perOut').value = "Perception: "+ creature.per +
+  " " + creature.senses;
+}
+
+function langUpdate() {
+  var mod = document.getElementById('langIn').value;
+  creature.languages = mod;
+  document.getElementById('langOut').value = "languages: " + creature.languages;
 }
 
 function abilityModUpdate(modIn, modOut, stat) {
   var mod = modIn.value;
   creature[stat] = abilityModifierScales[creature.crIndex][mod];
-  modOut.value = creature[stat];
+  modOut.value = stat +": "+ creature[stat];
 }
 
 function skillUpdate(skillEl, skillName) {
@@ -485,7 +497,7 @@ function skillUpdate(skillEl, skillName) {
   } else {
     console.log('skill statment error');
   }
-  skillStr = creature.acro + creature.arca + creature.athl + creature.craf + creature.dece + creature.dipl + creature.inti + creature.medi + creature.natu + creature.occu + creature.perf + creature.reli + creature.soci + creature.stea + creature.surv + creature.thie;
+  skillStr = "  skills: " + creature.acro + creature.arca + creature.athl + creature.craf + creature.dece + creature.dipl + creature.inti + creature.medi + creature.natu + creature.occu + creature.perf + creature.reli + creature.soci + creature.stea + creature.surv + creature.thie;
   document.getElementById('skillOut').value = skillStr;
 }
 
@@ -664,19 +676,19 @@ function loreDeleteRow(index){
 function acUpdate() {
   var mod = document.getElementById('acId').value;
   creature.ac = acScales[creature.crIndex][mod];
-  document.getElementById('acOutId').value = creature.ac;
+  document.getElementById('acOut').value = "AC: " + creature.ac;
 }
 
 function saveUpdate(saveIn, saveOut, saveName) {
   var mod = saveIn.value;
   creature[saveName] = savingThrowScales[creature.crIndex][mod];
-  saveOut.value = creature[saveName];
+  saveOut.value = saveName.name +": "+creature[saveName];
 }
 
 function hpBlockUpdate() {
   var mod = document.getElementById('hpId').value;
   creature.hp = hpScales[creature.crIndex][mod];
-  document.getElementById('hpOutId').value = creature.hp;
+  document.getElementById('hpOut').value = creature.hp;
 }
 
 function debug() {
